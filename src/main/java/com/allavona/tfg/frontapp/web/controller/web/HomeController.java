@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class BaseController {
+public class HomeController {
 
     @RequestMapping("/")
     public String root() {
@@ -17,10 +17,7 @@ public class BaseController {
         return "index";
     }
 
-    @RequestMapping("/private/index")
-    public String userIndex() {
-        return "private/index";
-    }
+
 
     @RequestMapping("/login")
     public String login() {
