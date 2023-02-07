@@ -39,5 +39,19 @@ public class IncidentesRestController {
         }
         return Optional.ofNullable(listado).map(ResponseEntity::ok).orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
     }
+    @RequestMapping(path="/{id}", produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.GET)
+    public ResponseEntity<Incidente> obtenerIncidente(
+            @PathVariable(name="id", required = true) final Integer idIncidente,
+            Authentication authentication) throws ApiException {
+        CustomUserDetails userDetails = (CustomUserDetails)  authentication.getDetails();
+
+        Incidente incidente = null;
+        try {
+            incidente = api.obtenerIncidente(userDetails.getUser().getIdUsuario(), idIncidente);
+        } catch (Exception e) {
+
+        }
+        return Optional.ofNullable(incidente).map(ResponseEntity::ok).orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+    }
 
 }

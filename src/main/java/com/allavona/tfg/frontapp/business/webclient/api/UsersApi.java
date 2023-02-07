@@ -79,8 +79,8 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Credenciales incorrectas </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call autenticarCall(Login login, final ApiCallback _callback) throws ApiException {
@@ -148,8 +148,8 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Credenciales incorrectas </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
      </table>
      */
     public Usuario autenticar(Login login) throws ApiException {
@@ -166,8 +166,8 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Credenciales incorrectas </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Usuario> autenticarWithHttpInfo(Login login) throws ApiException {
@@ -186,8 +186,8 @@ public class UsersApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Credenciales incorrectas </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Login realizado correctamente </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call autenticarAsync(Login login, final ApiCallback<Usuario> _callback) throws ApiException {

@@ -208,8 +208,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarIncidentesCall(Integer USER_ID, Boolean closed, final ApiCallback _callback) throws ApiException {
@@ -285,8 +285,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public List<Incidente> buscarIncidentes(Integer USER_ID, Boolean closed) throws ApiException {
@@ -304,8 +304,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<Incidente>> buscarIncidentesWithHttpInfo(Integer USER_ID, Boolean closed) throws ApiException {
@@ -325,8 +325,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarIncidentesAsync(Integer USER_ID, Boolean closed, final ApiCallback<List<Incidente>> _callback) throws ApiException {
@@ -345,8 +345,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarPlantillaClasificacionIncidenteCall(Integer id, final ApiCallback _callback) throws ApiException {
@@ -414,8 +414,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public TipoRecurso buscarPlantillaClasificacionIncidente(Integer id) throws ApiException {
@@ -432,8 +432,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<TipoRecurso> buscarPlantillaClasificacionIncidenteWithHttpInfo(Integer id) throws ApiException {
@@ -452,8 +452,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarPlantillaClasificacionIncidenteAsync(Integer id, final ApiCallback<TipoRecurso> _callback) throws ApiException {
@@ -682,7 +682,7 @@ public class IncidentsApi {
      * Este servicio permite consultar el detalle completo de un incidente.
      * @param USER_ID Id del usuario que está haciendo la petición. (required)
      * @param id Identificador del incidente. (required)
-     * @return List&lt;Incidente&gt;
+     * @return Incidente
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -691,8 +691,8 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public List<Incidente> obtenerIncidente(Integer USER_ID, Integer id) throws ApiException {
-        ApiResponse<List<Incidente>> localVarResp = obtenerIncidenteWithHttpInfo(USER_ID, id);
+    public Incidente obtenerIncidente(Integer USER_ID, Integer id) throws ApiException {
+        ApiResponse<Incidente> localVarResp = obtenerIncidenteWithHttpInfo(USER_ID, id);
         return localVarResp.getData();
     }
 
@@ -701,7 +701,7 @@ public class IncidentsApi {
      * Este servicio permite consultar el detalle completo de un incidente.
      * @param USER_ID Id del usuario que está haciendo la petición. (required)
      * @param id Identificador del incidente. (required)
-     * @return ApiResponse&lt;List&lt;Incidente&gt;&gt;
+     * @return ApiResponse&lt;Incidente&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -710,9 +710,9 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Incidente>> obtenerIncidenteWithHttpInfo(Integer USER_ID, Integer id) throws ApiException {
+    public ApiResponse<Incidente> obtenerIncidenteWithHttpInfo(Integer USER_ID, Integer id) throws ApiException {
         okhttp3.Call localVarCall = obtenerIncidenteValidateBeforeCall(USER_ID, id, null);
-        Type localVarReturnType = new TypeToken<List<Incidente>>(){}.getType();
+        Type localVarReturnType = new TypeToken<Incidente>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -731,10 +731,10 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call obtenerIncidenteAsync(Integer USER_ID, Integer id, final ApiCallback<List<Incidente>> _callback) throws ApiException {
+    public okhttp3.Call obtenerIncidenteAsync(Integer USER_ID, Integer id, final ApiCallback<Incidente> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = obtenerIncidenteValidateBeforeCall(USER_ID, id, _callback);
-        Type localVarReturnType = new TypeToken<List<Incidente>>(){}.getType();
+        Type localVarReturnType = new TypeToken<Incidente>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

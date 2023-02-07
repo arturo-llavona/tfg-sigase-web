@@ -1,4 +1,4 @@
-package com.allavona.tfg.frontapp.web.controller.rest;
+package com.allavona.tfg.frontapp.web.controller.web;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

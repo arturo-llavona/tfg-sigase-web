@@ -31,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @Service
 public class ResourcesApi {
     private ApiClient localVarApiClient;
@@ -80,8 +79,8 @@ public class ResourcesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listarCall(Integer type, Boolean onlyAvailable, final ApiCallback _callback) throws ApiException {
@@ -152,8 +151,8 @@ public class ResourcesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
      </table>
      */
     public List<Recurso> listar(Integer type, Boolean onlyAvailable) throws ApiException {
@@ -171,8 +170,8 @@ public class ResourcesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<Recurso>> listarWithHttpInfo(Integer type, Boolean onlyAvailable) throws ApiException {
@@ -192,8 +191,8 @@ public class ResourcesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call listarAsync(Integer type, Boolean onlyAvailable, final ApiCallback<List<Recurso>> _callback) throws ApiException {

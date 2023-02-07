@@ -16,7 +16,7 @@ package com.allavona.tfg.frontapp.business.webclient;
 import java.util.Collection;
 import java.util.Iterator;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T16:34:55.215125800+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T18:52:07.490553100+01:00[Europe/Madrid]")
 public class StringUtil {
   /**
    * Check if the given array contains the given value (with case-insensitive comparison).

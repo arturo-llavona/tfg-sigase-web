@@ -37,7 +37,7 @@ import com.allavona.tfg.frontapp.business.webclient.JSON;
 /**
  * IncidentePersonaAfectadaDTO
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T16:34:55.215125800+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T18:52:07.490553100+01:00[Europe/Madrid]")
 public class IncidentePersonaAfectadaDTO {
   public static final String SERIALIZED_NAME_ID_INCIDENTE_PERSONA_AFECTADA = "idIncidentePersonaAfectada";
   @SerializedName(SERIALIZED_NAME_ID_INCIDENTE_PERSONA_AFECTADA)
