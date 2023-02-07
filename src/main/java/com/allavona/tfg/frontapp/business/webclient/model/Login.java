@@ -36,7 +36,7 @@ import com.allavona.tfg.frontapp.business.webclient.JSON;
 /**
  * Login
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T18:52:07.490553100+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T22:05:24.907661+01:00[Europe/Madrid]")
 public class Login {
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)

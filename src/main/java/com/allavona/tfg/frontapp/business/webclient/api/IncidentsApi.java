@@ -34,7 +34,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 @Service
 public class IncidentsApi {
     private ApiClient localVarApiClient;
@@ -144,7 +143,7 @@ public class IncidentsApi {
      * Busca la clasificación incidente
      * Este servicio permite realizar una búsqueda de las clasificaciones de los incidentes a partir del comienzo de su código.
      * @param codigo Inicio del código que se está buscando. (optional)
-     * @return ClasificacionIncidente
+     * @return List&lt;ClasificacionIncidente&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -153,8 +152,8 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public ClasificacionIncidente buscarClasificacionIncidente(String codigo) throws ApiException {
-        ApiResponse<ClasificacionIncidente> localVarResp = buscarClasificacionIncidenteWithHttpInfo(codigo);
+    public List<ClasificacionIncidente> buscarClasificacionIncidente(String codigo) throws ApiException {
+        ApiResponse<List<ClasificacionIncidente>> localVarResp = buscarClasificacionIncidenteWithHttpInfo(codigo);
         return localVarResp.getData();
     }
 
@@ -162,7 +161,7 @@ public class IncidentsApi {
      * Busca la clasificación incidente
      * Este servicio permite realizar una búsqueda de las clasificaciones de los incidentes a partir del comienzo de su código.
      * @param codigo Inicio del código que se está buscando. (optional)
-     * @return ApiResponse&lt;ClasificacionIncidente&gt;
+     * @return ApiResponse&lt;List&lt;ClasificacionIncidente&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -171,9 +170,9 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ClasificacionIncidente> buscarClasificacionIncidenteWithHttpInfo(String codigo) throws ApiException {
+    public ApiResponse<List<ClasificacionIncidente>> buscarClasificacionIncidenteWithHttpInfo(String codigo) throws ApiException {
         okhttp3.Call localVarCall = buscarClasificacionIncidenteValidateBeforeCall(codigo, null);
-        Type localVarReturnType = new TypeToken<ClasificacionIncidente>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ClasificacionIncidente>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -191,10 +190,10 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call buscarClasificacionIncidenteAsync(String codigo, final ApiCallback<ClasificacionIncidente> _callback) throws ApiException {
+    public okhttp3.Call buscarClasificacionIncidenteAsync(String codigo, final ApiCallback<List<ClasificacionIncidente>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = buscarClasificacionIncidenteValidateBeforeCall(codigo, _callback);
-        Type localVarReturnType = new TypeToken<ClasificacionIncidente>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<ClasificacionIncidente>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -409,7 +408,7 @@ public class IncidentsApi {
      * Obtiene la lista de recursos a movilizar para una clasificación
      * Este servicio devuelve el listado de los tipos de recursos recomendados a movilizar para una clasificación de incidente determinada
      * @param id Identificador de la clasificación del incidente. (required)
-     * @return TipoRecurso
+     * @return List&lt;TipoRecurso&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -418,8 +417,8 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public TipoRecurso buscarPlantillaClasificacionIncidente(Integer id) throws ApiException {
-        ApiResponse<TipoRecurso> localVarResp = buscarPlantillaClasificacionIncidenteWithHttpInfo(id);
+    public List<TipoRecurso> buscarPlantillaClasificacionIncidente(Integer id) throws ApiException {
+        ApiResponse<List<TipoRecurso>> localVarResp = buscarPlantillaClasificacionIncidenteWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -427,7 +426,7 @@ public class IncidentsApi {
      * Obtiene la lista de recursos a movilizar para una clasificación
      * Este servicio devuelve el listado de los tipos de recursos recomendados a movilizar para una clasificación de incidente determinada
      * @param id Identificador de la clasificación del incidente. (required)
-     * @return ApiResponse&lt;TipoRecurso&gt;
+     * @return ApiResponse&lt;List&lt;TipoRecurso&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -436,9 +435,9 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TipoRecurso> buscarPlantillaClasificacionIncidenteWithHttpInfo(Integer id) throws ApiException {
+    public ApiResponse<List<TipoRecurso>> buscarPlantillaClasificacionIncidenteWithHttpInfo(Integer id) throws ApiException {
         okhttp3.Call localVarCall = buscarPlantillaClasificacionIncidenteValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<TipoRecurso>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<TipoRecurso>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -456,10 +455,10 @@ public class IncidentsApi {
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call buscarPlantillaClasificacionIncidenteAsync(Integer id, final ApiCallback<TipoRecurso> _callback) throws ApiException {
+    public okhttp3.Call buscarPlantillaClasificacionIncidenteAsync(Integer id, final ApiCallback<List<TipoRecurso>> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = buscarPlantillaClasificacionIncidenteValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<TipoRecurso>(){}.getType();
+        Type localVarReturnType = new TypeToken<List<TipoRecurso>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -473,8 +472,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call crearIncidenteCall(Integer USER_ID, IncidenteDTO incidenteDTO, final ApiCallback _callback) throws ApiException {
@@ -550,8 +549,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public void crearIncidente(Integer USER_ID, IncidenteDTO incidenteDTO) throws ApiException {
@@ -568,8 +567,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> crearIncidenteWithHttpInfo(Integer USER_ID, IncidenteDTO incidenteDTO) throws ApiException {
@@ -588,8 +587,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call crearIncidenteAsync(Integer USER_ID, IncidenteDTO incidenteDTO, final ApiCallback<Void> _callback) throws ApiException {
@@ -608,8 +607,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call obtenerIncidenteCall(Integer USER_ID, Integer id, final ApiCallback _callback) throws ApiException {
@@ -687,8 +686,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public Incidente obtenerIncidente(Integer USER_ID, Integer id) throws ApiException {
@@ -706,8 +705,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Incidente> obtenerIncidenteWithHttpInfo(Integer USER_ID, Integer id) throws ApiException {
@@ -727,8 +726,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
         <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call obtenerIncidenteAsync(Integer USER_ID, Integer id, final ApiCallback<Incidente> _callback) throws ApiException {

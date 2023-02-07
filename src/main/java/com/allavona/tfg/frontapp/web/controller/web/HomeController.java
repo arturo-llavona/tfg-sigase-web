@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
-
     @RequestMapping("/")
     public String root() {
         return "redirect:/index";
@@ -16,8 +15,6 @@ public class HomeController {
     public String index() {
         return "index";
     }
-
-
 
     @RequestMapping("/login")
     public String login() {

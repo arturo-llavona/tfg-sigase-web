@@ -36,7 +36,7 @@ import com.allavona.tfg.frontapp.business.webclient.JSON;
 /**
  * RecursoDTO
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T18:52:07.490553100+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T22:05:24.907661+01:00[Europe/Madrid]")
 public class RecursoDTO {
   public static final String SERIALIZED_NAME_ID_RECURSO = "idRecurso";
   @SerializedName(SERIALIZED_NAME_ID_RECURSO)
