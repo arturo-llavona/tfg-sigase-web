@@ -24,11 +24,8 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
         String name = authentication.getName();
         String password = authentication.getCredentials().toString();
-
-        System.out.println(name + " " + password);
 
         Login login = new Login();
         login.setUsername(name);
@@ -36,7 +33,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         try {
             Usuario usuario = api.autenticar(login);
             if (usuario != null ) {
-                System.out.println(usuario);
                 usuario.setPassword(password);
                 ArrayList<GrantedAuthority> authorities = new ArrayList<>();
                 UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(name, password, authorities);
