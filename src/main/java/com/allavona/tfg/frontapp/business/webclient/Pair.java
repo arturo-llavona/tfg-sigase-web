@@ -13,7 +13,7 @@
 
 package com.allavona.tfg.frontapp.business.webclient;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T22:05:24.907661+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-08T16:32:14.863738400+01:00[Europe/Madrid]")
 public class Pair {
     private String name = "";
     private String value = "";

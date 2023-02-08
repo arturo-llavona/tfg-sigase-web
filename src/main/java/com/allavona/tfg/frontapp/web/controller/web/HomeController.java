@@ -26,5 +26,4 @@ public class HomeController {
         model.addAttribute("loginError", true);
         return "login";
     }
-
 }
