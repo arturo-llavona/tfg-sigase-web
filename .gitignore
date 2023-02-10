@@ -35,3 +35,10 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+## Aplicacion React
+node_modules
+dist
+dist-ssr
+*.local
