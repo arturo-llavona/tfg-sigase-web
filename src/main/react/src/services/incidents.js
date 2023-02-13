@@ -1,8 +1,8 @@
-const API_URL = "http://localhost:8080/tfg-sigase-api/v1";
+const API_URL = "http://localhost:8090/private/rest";
 
 export async function getActiveIncidents() {
     try {
-        const response = await fetch(`${API_URL}/incidents?closed=false`, { headers: { 'USER-NAME': '71661919Z'}});
+        const response = await fetch(`${API_URL}/incidents?closed=false`);
         const data = await response.json();
         return data;
     } catch ( error ) {
@@ -12,7 +12,7 @@ export async function getActiveIncidents() {
 
 export async function getClosedIncidents() {
     try {
-        const response = await fetch(`${API_URL}/incidents?closed=true`, { headers: { 'USER-NAME': '71661919Z'}});
+        const response = await fetch(`${API_URL}/incidents?closed=true`);
         const data = await response.json();
         return data;
     } catch ( error ) {
@@ -22,7 +22,7 @@ export async function getClosedIncidents() {
 
 export async function getIncidentByIdIncident(idIncident) {
     try {
-        const response = await fetch(`${API_URL}/incidents/${idIncident}`, { headers: { 'USER-NAME': '71661919Z'}});
+        const response = await fetch(`${API_URL}/incidents/${idIncident}`);
         const data = await response.json();
         return data;
     } catch ( error ) {

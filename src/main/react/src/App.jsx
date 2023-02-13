@@ -34,9 +34,9 @@ export function App() {
 
   let visibleView = "";
   if ( view === 1 ) {
-    visibleView = <ActiveIncidentsListView></ActiveIncidentsListView>;
+    visibleView = <ActiveIncidentsListView/>;
   } else if ( view === 2 ) {
-    visibleView = <ClosedIncidentsListView></ClosedIncidentsListView>;
+    visibleView = <ClosedIncidentsListView/>;
   }
 
   return (
