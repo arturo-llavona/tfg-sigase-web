@@ -50,8 +50,12 @@ export function ClosedIncidentsListView() {
     setPage(0);
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     API.getClosedIncidents().then(setIncidents);
+    const interval = setInterval(() => {
+      API.getClosedIncidents().then(setIncidents);
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   return (

@@ -50,8 +50,12 @@ export function ActiveIncidentsListView() {
     setPage(0);
   };
 
-  useEffect(()=> {
+  useEffect(() => {
     API.getActiveIncidents().then(setIncidents);
+    const interval = setInterval(() => {
+      API.getActiveIncidents().then(setIncidents);
+    }, 10000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
