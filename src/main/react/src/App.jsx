@@ -1,6 +1,6 @@
-
-
 import * as React from "react";
+
+import { useState, useEffect } from "react";
 
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -21,13 +21,23 @@ import HomeIcon from '@mui/icons-material/Home';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 
-import { IncidentsList } from "./components/incidents-list";
+import { ActiveIncidentsListView } from "./components/active-incidents-list-view";
+import { ClosedIncidentsListView } from "./components/closed-incidents-list-view";
 
 import { Center } from "@chakra-ui/react";
 
 const drawerWidth = 200;
 
 export function App() {
+  const [view, setView] = React.useState(1);
+  const isViewSelected = (v) => v === view;
+
+  let visibleView = "";
+  if ( view === 1 ) {
+    visibleView = <ActiveIncidentsListView></ActiveIncidentsListView>;
+  } else if ( view === 2 ) {
+    visibleView = <ClosedIncidentsListView></ClosedIncidentsListView>;
+  }
 
   return (
     <>
@@ -74,16 +84,24 @@ export function App() {
         <Divider />          
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            <ListItem key="m_inicio" disablePadding>
-              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected>
+            <ListItem key="m_incidentesEnCurso" disablePadding>
+              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected(1)} onClick={() => { setView(1); }}>
                 <ListItemIcon>
                   <HomeIcon color="primary" />
                 </ListItemIcon>
-                <ListItemText primary="Inicio" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0, fontWeight: "bold"}}/>
+                <ListItemText primary="Incidentes en curso" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
               </ListItemButton>
-            </ListItem>   
+            </ListItem>
+            <ListItem key="m_incidentesCerrados" disablePadding>
+              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected(2)} onClick={() => { setView(2); }}>
+                <ListItemIcon>
+                  <HomeIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Incidentes cerrados" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
+              </ListItemButton>
+            </ListItem>               
             <ListItem key="m_crearIncidente" disablePadding>
-              <ListItemButton sx={{ py: 1.5, minHeight: 32 }}>
+              <ListItemButton sx={{ py: 1.5, minHeight: 32 }}  selected={isViewSelected(3)} onClick={() => { setView(3); }}>
                 <ListItemIcon>
                   <AddCircleIcon/>
                 </ListItemIcon>
@@ -91,22 +109,11 @@ export function App() {
               </ListItemButton>
             </ListItem>                                       
           </List>
-          <Divider />
-          <List>
-            <ListItem key="m_logout" disablePadding>
-              <ListItemButton sx={{ py: 1.5, minHeight: 32 }}>
-                <ListItemIcon>
-                  <LogoutIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Cerrar sesión" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
-              </ListItemButton>
-            </ListItem>     
-          </List>
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-        <IncidentsList></IncidentsList>        
+        {visibleView}
       </Box>
     </Box>
     </>

@@ -14,11 +14,11 @@ import Paper from '@mui/material/Paper';
 import * as API from "../services/incidents";
 
 
-export function IncidentsList() {
+export function ActiveIncidentsListView() {
   const [incidents, setIncidents] = useState([]);
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
   const [selected, setSelected] = React.useState([]);
 
   const handleClick = (event, name) => {
@@ -51,8 +51,9 @@ export function IncidentsList() {
   };
 
   useEffect(()=> {
-    API.getAllIncidents().then(setIncidents);
+    API.getActiveIncidents().then(setIncidents);
   }, []);
+
   return (
     <>
     <TableContainer component={Paper}>
