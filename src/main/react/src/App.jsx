@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { useState, useEffect } from "react";
-
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -22,10 +20,11 @@ import AddAlertIcon from '@mui/icons-material/AddAlert';
 import HistoryIcon from '@mui/icons-material/History';
 import MinorCrashIcon from '@mui/icons-material/MinorCrash';
 
-import { ActiveIncidentsListView } from "./components/active-incidents-list-view";
-import { ClosedIncidentsListView } from "./components/closed-incidents-list-view";
+import {ActiveIncidentsListView} from "./components/active-incidents-list-view";
+import {ClosedIncidentsListView} from "./components/closed-incidents-list-view";
+import {ActiveResourcesListView} from "./components/active-resources-list-view";
 
-import { Center } from "@chakra-ui/react";
+import {Center} from "@chakra-ui/react";
 
 const drawerWidth = 200;
 
@@ -38,6 +37,8 @@ export function App() {
     visibleView = <ActiveIncidentsListView/>;
   } else if ( view === "m_incidentesCerrados" ) {
     visibleView = <ClosedIncidentsListView/>;
+  } else if ( view == "m_recursosMovilizados" ) {
+    visibleView = <ActiveResourcesListView/>;
   }
 
   return (
