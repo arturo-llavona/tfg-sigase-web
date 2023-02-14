@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @Service
 public class IncidentsApi {
     private ApiClient localVarApiClient;
@@ -81,8 +82,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarClasificacionIncidenteCall(String codigo, final ApiCallback _callback) throws ApiException {
@@ -148,8 +149,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public List<ClasificacionIncidente> buscarClasificacionIncidente(String codigo) throws ApiException {
@@ -166,8 +167,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<ClasificacionIncidente>> buscarClasificacionIncidenteWithHttpInfo(String codigo) throws ApiException {
@@ -186,8 +187,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarClasificacionIncidenteAsync(String codigo, final ApiCallback<List<ClasificacionIncidente>> _callback) throws ApiException {
@@ -207,8 +208,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarIncidentesCall(String USER_NAME, Boolean closed, final ApiCallback _callback) throws ApiException {
@@ -284,8 +285,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public List<Incidente> buscarIncidentes(String USER_NAME, Boolean closed) throws ApiException {
@@ -303,8 +304,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<Incidente>> buscarIncidentesWithHttpInfo(String USER_NAME, Boolean closed) throws ApiException {
@@ -324,8 +325,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarIncidentesAsync(String USER_NAME, Boolean closed, final ApiCallback<List<Incidente>> _callback) throws ApiException {
@@ -344,8 +345,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarPlantillaClasificacionIncidenteCall(Integer id, final ApiCallback _callback) throws ApiException {
@@ -413,8 +414,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public List<TipoRecurso> buscarPlantillaClasificacionIncidente(Integer id) throws ApiException {
@@ -431,8 +432,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<List<TipoRecurso>> buscarPlantillaClasificacionIncidenteWithHttpInfo(Integer id) throws ApiException {
@@ -451,8 +452,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 404 </td><td> No se han encontrado resultados </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call buscarPlantillaClasificacionIncidenteAsync(Integer id, final ApiCallback<List<TipoRecurso>> _callback) throws ApiException {
@@ -472,8 +473,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call crearIncidenteCall(String USER_NAME, IncidenteDTO incidenteDTO, final ApiCallback _callback) throws ApiException {
@@ -549,8 +550,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
     public void crearIncidente(String USER_NAME, IncidenteDTO incidenteDTO) throws ApiException {
@@ -567,8 +568,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
     public ApiResponse<Void> crearIncidenteWithHttpInfo(String USER_NAME, IncidenteDTO incidenteDTO) throws ApiException {
@@ -587,8 +588,8 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
     public okhttp3.Call crearIncidenteAsync(String USER_NAME, IncidenteDTO incidenteDTO, final ApiCallback<Void> _callback) throws ApiException {

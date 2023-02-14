@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8090/private/rest";
+const API_URL = "/private/rest";
 
 export async function getActiveIncidents() {
     try {

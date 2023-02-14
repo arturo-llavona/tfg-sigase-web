@@ -14,7 +14,7 @@ import Paper from '@mui/material/Paper';
 import * as API from "../services/incidents";
 
 
-export function ActiveIncidentsListView() {
+export function ActiveResourcesListView() {
   const [incidents, setIncidents] = useState([]);
 
   const [page, setPage] = React.useState(0);
@@ -61,7 +61,7 @@ export function ActiveIncidentsListView() {
   return (
     <>
     <Typography variant="h6" noWrap component="div" marginBottom={2}>
-      Listado de incidentes activos
+      Listado de recursos movilizados
     </Typography>    
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">

@@ -92,6 +92,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapter(byte[].class, byteArrayAdapter);
         gsonBuilder.registerTypeAdapterFactory(new com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidente.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidenteDTO.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.allavona.tfg.frontapp.business.webclient.model.EstadoRecurso.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.allavona.tfg.frontapp.business.webclient.model.EstadoRecursoDTO.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.allavona.tfg.frontapp.business.webclient.model.Incidente.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.allavona.tfg.frontapp.business.webclient.model.IncidenteDTO.CustomTypeAdapterFactory());

@@ -20,6 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import com.allavona.tfg.frontapp.business.webclient.model.EstadoRecurso;
+import com.allavona.tfg.frontapp.business.webclient.model.TipoRecurso;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -36,7 +38,7 @@ import com.allavona.tfg.frontapp.business.webclient.JSON;
 /**
  * Recurso
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-08T16:32:14.863738400+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-14T18:29:17.023612800+01:00[Europe/Madrid]")
 public class Recurso {
   public static final String SERIALIZED_NAME_ID_RECURSO = "idRecurso";
   @SerializedName(SERIALIZED_NAME_ID_RECURSO)
@@ -45,6 +47,10 @@ public class Recurso {
   public static final String SERIALIZED_NAME_TIPO_RECURSO = "tipoRecurso";
   @SerializedName(SERIALIZED_NAME_TIPO_RECURSO)
   private TipoRecurso tipoRecurso;
+
+  public static final String SERIALIZED_NAME_ESTADO = "estado";
+  @SerializedName(SERIALIZED_NAME_ESTADO)
+  private EstadoRecurso estado;
 
   public static final String SERIALIZED_NAME_NOMBRE = "nombre";
   @SerializedName(SERIALIZED_NAME_NOMBRE)
@@ -102,6 +108,28 @@ public class Recurso {
 
   public void setTipoRecurso(TipoRecurso tipoRecurso) {
     this.tipoRecurso = tipoRecurso;
+  }
+
+
+  public Recurso estado(EstadoRecurso estado) {
+    
+    this.estado = estado;
+    return this;
+  }
+
+   /**
+   * Get estado
+   * @return estado
+  **/
+  @javax.annotation.Nullable
+
+  public EstadoRecurso getEstado() {
+    return estado;
+  }
+
+
+  public void setEstado(EstadoRecurso estado) {
+    this.estado = estado;
   }
 
 
@@ -183,6 +211,7 @@ public class Recurso {
     Recurso recurso = (Recurso) o;
     return Objects.equals(this.idRecurso, recurso.idRecurso) &&
         Objects.equals(this.tipoRecurso, recurso.tipoRecurso) &&
+        Objects.equals(this.estado, recurso.estado) &&
         Objects.equals(this.nombre, recurso.nombre) &&
         Objects.equals(this.esConsultaSanitaria, recurso.esConsultaSanitaria) &&
         Objects.equals(this.habilitado, recurso.habilitado);
@@ -190,7 +219,7 @@ public class Recurso {
 
   @Override
   public int hashCode() {
-    return Objects.hash(idRecurso, tipoRecurso, nombre, esConsultaSanitaria, habilitado);
+    return Objects.hash(idRecurso, tipoRecurso, estado, nombre, esConsultaSanitaria, habilitado);
   }
 
   @Override
@@ -199,6 +228,7 @@ public class Recurso {
     sb.append("class Recurso {\n");
     sb.append("    idRecurso: ").append(toIndentedString(idRecurso)).append("\n");
     sb.append("    tipoRecurso: ").append(toIndentedString(tipoRecurso)).append("\n");
+    sb.append("    estado: ").append(toIndentedString(estado)).append("\n");
     sb.append("    nombre: ").append(toIndentedString(nombre)).append("\n");
     sb.append("    esConsultaSanitaria: ").append(toIndentedString(esConsultaSanitaria)).append("\n");
     sb.append("    habilitado: ").append(toIndentedString(habilitado)).append("\n");
@@ -226,6 +256,7 @@ public class Recurso {
     openapiFields = new HashSet<String>();
     openapiFields.add("idRecurso");
     openapiFields.add("tipoRecurso");
+    openapiFields.add("estado");
     openapiFields.add("nombre");
     openapiFields.add("esConsultaSanitaria");
     openapiFields.add("habilitado");
@@ -257,6 +288,10 @@ public class Recurso {
       // validate the optional field `tipoRecurso`
       if (jsonObj.get("tipoRecurso") != null && !jsonObj.get("tipoRecurso").isJsonNull()) {
         TipoRecurso.validateJsonObject(jsonObj.getAsJsonObject("tipoRecurso"));
+      }
+      // validate the optional field `estado`
+      if (jsonObj.get("estado") != null && !jsonObj.get("estado").isJsonNull()) {
+        EstadoRecurso.validateJsonObject(jsonObj.getAsJsonObject("estado"));
       }
       if ((jsonObj.get("nombre") != null && !jsonObj.get("nombre").isJsonNull()) && !jsonObj.get("nombre").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `nombre` to be a primitive type in the JSON string but got `%s`", jsonObj.get("nombre").toString()));
