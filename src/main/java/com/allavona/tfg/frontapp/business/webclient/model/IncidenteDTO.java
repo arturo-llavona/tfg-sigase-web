@@ -23,6 +23,11 @@ import java.io.IOException;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidenteDTO;
+import com.allavona.tfg.frontapp.business.webclient.model.IncidentePersonaAfectadaDTO;
+import com.allavona.tfg.frontapp.business.webclient.model.ObservacionDTO;
+import com.allavona.tfg.frontapp.business.webclient.model.RecursoDTO;
+import com.allavona.tfg.frontapp.business.webclient.model.TipoRecursoDTO;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -40,7 +45,7 @@ import com.allavona.tfg.frontapp.business.webclient.JSON;
 /**
  * IncidenteDTO
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T22:05:24.907661+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-14T18:29:17.023612800+01:00[Europe/Madrid]")
 public class IncidenteDTO {
   public static final String SERIALIZED_NAME_ID_INCIDENTE = "idIncidente";
   @SerializedName(SERIALIZED_NAME_ID_INCIDENTE)

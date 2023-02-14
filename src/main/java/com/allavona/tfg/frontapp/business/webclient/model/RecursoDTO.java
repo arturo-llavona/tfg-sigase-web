@@ -20,6 +20,8 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
+import com.allavona.tfg.frontapp.business.webclient.model.EstadoRecursoDTO;
+import com.allavona.tfg.frontapp.business.webclient.model.TipoRecursoDTO;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -36,7 +38,7 @@ import com.allavona.tfg.frontapp.business.webclient.JSON;
 /**
  * RecursoDTO
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-07T22:05:24.907661+01:00[Europe/Madrid]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-14T18:29:17.023612800+01:00[Europe/Madrid]")
 public class RecursoDTO {
   public static final String SERIALIZED_NAME_ID_RECURSO = "idRecurso";
   @SerializedName(SERIALIZED_NAME_ID_RECURSO)

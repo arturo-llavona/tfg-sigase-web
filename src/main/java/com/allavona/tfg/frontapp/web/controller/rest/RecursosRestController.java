@@ -1,20 +1,15 @@
 package com.allavona.tfg.frontapp.web.controller.rest;
 
-import com.allavona.tfg.frontapp.business.webclient.ApiException;
-import com.allavona.tfg.frontapp.business.webclient.api.IncidentsApi;
 import com.allavona.tfg.frontapp.business.webclient.api.ResourcesApi;
-import com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidente;
-import com.allavona.tfg.frontapp.business.webclient.model.Incidente;
 import com.allavona.tfg.frontapp.business.webclient.model.Recurso;
-import com.allavona.tfg.frontapp.business.webclient.model.TipoRecurso;
-import com.allavona.tfg.frontapp.security.CustomUserDetails;
 import com.allavona.tfg.frontapp.web.controller.utils.URLConstants;
-import org.springframework.core.convert.TypeDescriptor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;

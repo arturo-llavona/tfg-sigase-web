@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 @Service
 public class IncidentsApi {
     private ApiClient localVarApiClient;
@@ -199,7 +200,7 @@ public class IncidentsApi {
     }
     /**
      * Build call for buscarIncidentes
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param closed Parámetro que indica si el incidente ya ha sido finalizado. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -207,11 +208,11 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call buscarIncidentesCall(Integer USER_ID, Boolean closed, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call buscarIncidentesCall(String USER_NAME, Boolean closed, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -240,8 +241,8 @@ public class IncidentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("closed", closed));
         }
 
-        if (USER_ID != null) {
-            localVarHeaderParams.put("USER-ID", localVarApiClient.parameterToString(USER_ID));
+        if (USER_NAME != null) {
+            localVarHeaderParams.put("USER-NAME", localVarApiClient.parameterToString(USER_NAME));
         }
 
         final String[] localVarAccepts = {
@@ -264,51 +265,51 @@ public class IncidentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call buscarIncidentesValidateBeforeCall(Integer USER_ID, Boolean closed, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'USER_ID' is set
-        if (USER_ID == null) {
-            throw new ApiException("Missing the required parameter 'USER_ID' when calling buscarIncidentes(Async)");
+    private okhttp3.Call buscarIncidentesValidateBeforeCall(String USER_NAME, Boolean closed, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'USER_NAME' is set
+        if (USER_NAME == null) {
+            throw new ApiException("Missing the required parameter 'USER_NAME' when calling buscarIncidentes(Async)");
         }
 
-        return buscarIncidentesCall(USER_ID, closed, _callback);
+        return buscarIncidentesCall(USER_NAME, closed, _callback);
 
     }
 
     /**
      * Realiza una búsqueda de incidentes
      * Este servicio permite realizar una búsqueda de los incidentes, especificando si están aún en curso o no.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param closed Parámetro que indica si el incidente ya ha sido finalizado. (optional)
      * @return List&lt;Incidente&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public List<Incidente> buscarIncidentes(Integer USER_ID, Boolean closed) throws ApiException {
-        ApiResponse<List<Incidente>> localVarResp = buscarIncidentesWithHttpInfo(USER_ID, closed);
+    public List<Incidente> buscarIncidentes(String USER_NAME, Boolean closed) throws ApiException {
+        ApiResponse<List<Incidente>> localVarResp = buscarIncidentesWithHttpInfo(USER_NAME, closed);
         return localVarResp.getData();
     }
 
     /**
      * Realiza una búsqueda de incidentes
      * Este servicio permite realizar una búsqueda de los incidentes, especificando si están aún en curso o no.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param closed Parámetro que indica si el incidente ya ha sido finalizado. (optional)
      * @return ApiResponse&lt;List&lt;Incidente&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<Incidente>> buscarIncidentesWithHttpInfo(Integer USER_ID, Boolean closed) throws ApiException {
-        okhttp3.Call localVarCall = buscarIncidentesValidateBeforeCall(USER_ID, closed, null);
+    public ApiResponse<List<Incidente>> buscarIncidentesWithHttpInfo(String USER_NAME, Boolean closed) throws ApiException {
+        okhttp3.Call localVarCall = buscarIncidentesValidateBeforeCall(USER_NAME, closed, null);
         Type localVarReturnType = new TypeToken<List<Incidente>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -316,7 +317,7 @@ public class IncidentsApi {
     /**
      * Realiza una búsqueda de incidentes (asynchronously)
      * Este servicio permite realizar una búsqueda de los incidentes, especificando si están aún en curso o no.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param closed Parámetro que indica si el incidente ya ha sido finalizado. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -324,13 +325,13 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> Consulta finalizada con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call buscarIncidentesAsync(Integer USER_ID, Boolean closed, final ApiCallback<List<Incidente>> _callback) throws ApiException {
+    public okhttp3.Call buscarIncidentesAsync(String USER_NAME, Boolean closed, final ApiCallback<List<Incidente>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = buscarIncidentesValidateBeforeCall(USER_ID, closed, _callback);
+        okhttp3.Call localVarCall = buscarIncidentesValidateBeforeCall(USER_NAME, closed, _callback);
         Type localVarReturnType = new TypeToken<List<Incidente>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -464,7 +465,7 @@ public class IncidentsApi {
     }
     /**
      * Build call for crearIncidente
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param incidenteDTO  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -472,11 +473,11 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call crearIncidenteCall(Integer USER_ID, IncidenteDTO incidenteDTO, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call crearIncidenteCall(String USER_NAME, IncidenteDTO incidenteDTO, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -501,8 +502,8 @@ public class IncidentsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (USER_ID != null) {
-            localVarHeaderParams.put("USER-ID", localVarApiClient.parameterToString(USER_ID));
+        if (USER_NAME != null) {
+            localVarHeaderParams.put("USER-NAME", localVarApiClient.parameterToString(USER_NAME));
         }
 
         final String[] localVarAccepts = {
@@ -525,10 +526,10 @@ public class IncidentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call crearIncidenteValidateBeforeCall(Integer USER_ID, IncidenteDTO incidenteDTO, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'USER_ID' is set
-        if (USER_ID == null) {
-            throw new ApiException("Missing the required parameter 'USER_ID' when calling crearIncidente(Async)");
+    private okhttp3.Call crearIncidenteValidateBeforeCall(String USER_NAME, IncidenteDTO incidenteDTO, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'USER_NAME' is set
+        if (USER_NAME == null) {
+            throw new ApiException("Missing the required parameter 'USER_NAME' when calling crearIncidente(Async)");
         }
 
         // verify the required parameter 'incidenteDTO' is set
@@ -536,50 +537,50 @@ public class IncidentsApi {
             throw new ApiException("Missing the required parameter 'incidenteDTO' when calling crearIncidente(Async)");
         }
 
-        return crearIncidenteCall(USER_ID, incidenteDTO, _callback);
+        return crearIncidenteCall(USER_NAME, incidenteDTO, _callback);
 
     }
 
     /**
      * Crea un nuevo incidente
      * Este servicio permite crear un nuevo incidente.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param incidenteDTO  (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public void crearIncidente(Integer USER_ID, IncidenteDTO incidenteDTO) throws ApiException {
-        crearIncidenteWithHttpInfo(USER_ID, incidenteDTO);
+    public void crearIncidente(String USER_NAME, IncidenteDTO incidenteDTO) throws ApiException {
+        crearIncidenteWithHttpInfo(USER_NAME, incidenteDTO);
     }
 
     /**
      * Crea un nuevo incidente
      * Este servicio permite crear un nuevo incidente.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param incidenteDTO  (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> crearIncidenteWithHttpInfo(Integer USER_ID, IncidenteDTO incidenteDTO) throws ApiException {
-        okhttp3.Call localVarCall = crearIncidenteValidateBeforeCall(USER_ID, incidenteDTO, null);
+    public ApiResponse<Void> crearIncidenteWithHttpInfo(String USER_NAME, IncidenteDTO incidenteDTO) throws ApiException {
+        okhttp3.Call localVarCall = crearIncidenteValidateBeforeCall(USER_NAME, incidenteDTO, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
      * Crea un nuevo incidente (asynchronously)
      * Este servicio permite crear un nuevo incidente.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param incidenteDTO  (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -587,19 +588,19 @@ public class IncidentsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> Incidente creado con éxito </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call crearIncidenteAsync(Integer USER_ID, IncidenteDTO incidenteDTO, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call crearIncidenteAsync(String USER_NAME, IncidenteDTO incidenteDTO, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = crearIncidenteValidateBeforeCall(USER_ID, incidenteDTO, _callback);
+        okhttp3.Call localVarCall = crearIncidenteValidateBeforeCall(USER_NAME, incidenteDTO, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
      * Build call for obtenerIncidente
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param id Identificador del incidente. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -611,7 +612,7 @@ public class IncidentsApi {
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call obtenerIncidenteCall(Integer USER_ID, Integer id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call obtenerIncidenteCall(String USER_NAME, Integer id, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -637,8 +638,8 @@ public class IncidentsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (USER_ID != null) {
-            localVarHeaderParams.put("USER-ID", localVarApiClient.parameterToString(USER_ID));
+        if (USER_NAME != null) {
+            localVarHeaderParams.put("USER-NAME", localVarApiClient.parameterToString(USER_NAME));
         }
 
         final String[] localVarAccepts = {
@@ -661,10 +662,10 @@ public class IncidentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call obtenerIncidenteValidateBeforeCall(Integer USER_ID, Integer id, final ApiCallback _callback) throws ApiException {
-        // verify the required parameter 'USER_ID' is set
-        if (USER_ID == null) {
-            throw new ApiException("Missing the required parameter 'USER_ID' when calling obtenerIncidente(Async)");
+    private okhttp3.Call obtenerIncidenteValidateBeforeCall(String USER_NAME, Integer id, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'USER_NAME' is set
+        if (USER_NAME == null) {
+            throw new ApiException("Missing the required parameter 'USER_NAME' when calling obtenerIncidente(Async)");
         }
 
         // verify the required parameter 'id' is set
@@ -672,14 +673,14 @@ public class IncidentsApi {
             throw new ApiException("Missing the required parameter 'id' when calling obtenerIncidente(Async)");
         }
 
-        return obtenerIncidenteCall(USER_ID, id, _callback);
+        return obtenerIncidenteCall(USER_NAME, id, _callback);
 
     }
 
     /**
      * Obtiene el detalle de un incidente
      * Este servicio permite consultar el detalle completo de un incidente.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param id Identificador del incidente. (required)
      * @return Incidente
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -690,15 +691,15 @@ public class IncidentsApi {
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
-    public Incidente obtenerIncidente(Integer USER_ID, Integer id) throws ApiException {
-        ApiResponse<Incidente> localVarResp = obtenerIncidenteWithHttpInfo(USER_ID, id);
+    public Incidente obtenerIncidente(String USER_NAME, Integer id) throws ApiException {
+        ApiResponse<Incidente> localVarResp = obtenerIncidenteWithHttpInfo(USER_NAME, id);
         return localVarResp.getData();
     }
 
     /**
      * Obtiene el detalle de un incidente
      * Este servicio permite consultar el detalle completo de un incidente.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param id Identificador del incidente. (required)
      * @return ApiResponse&lt;Incidente&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -709,8 +710,8 @@ public class IncidentsApi {
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Incidente> obtenerIncidenteWithHttpInfo(Integer USER_ID, Integer id) throws ApiException {
-        okhttp3.Call localVarCall = obtenerIncidenteValidateBeforeCall(USER_ID, id, null);
+    public ApiResponse<Incidente> obtenerIncidenteWithHttpInfo(String USER_NAME, Integer id) throws ApiException {
+        okhttp3.Call localVarCall = obtenerIncidenteValidateBeforeCall(USER_NAME, id, null);
         Type localVarReturnType = new TypeToken<Incidente>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -718,7 +719,7 @@ public class IncidentsApi {
     /**
      * Obtiene el detalle de un incidente (asynchronously)
      * Este servicio permite consultar el detalle completo de un incidente.
-     * @param USER_ID Id del usuario que está haciendo la petición. (required)
+     * @param USER_NAME Nombre del usuario que está haciendo la petición. (required)
      * @param id Identificador del incidente. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -730,9 +731,9 @@ public class IncidentsApi {
         <tr><td> 401 </td><td> Acceso no autorizado </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call obtenerIncidenteAsync(Integer USER_ID, Integer id, final ApiCallback<Incidente> _callback) throws ApiException {
+    public okhttp3.Call obtenerIncidenteAsync(String USER_NAME, Integer id, final ApiCallback<Incidente> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = obtenerIncidenteValidateBeforeCall(USER_ID, id, _callback);
+        okhttp3.Call localVarCall = obtenerIncidenteValidateBeforeCall(USER_NAME, id, _callback);
         Type localVarReturnType = new TypeToken<Incidente>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

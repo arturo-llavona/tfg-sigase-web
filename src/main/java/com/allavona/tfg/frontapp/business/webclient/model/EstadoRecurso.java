@@ -35,10 +35,10 @@ import java.util.Set;
 import com.allavona.tfg.frontapp.business.webclient.JSON;
 
 /**
- * EstadoRecursoDTO
+ * EstadoRecurso
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-02-14T18:29:17.023612800+01:00[Europe/Madrid]")
-public class EstadoRecursoDTO {
+public class EstadoRecurso {
   public static final String SERIALIZED_NAME_ID_RECURSO_ESTADO = "idRecursoEstado";
   @SerializedName(SERIALIZED_NAME_ID_RECURSO_ESTADO)
   private Integer idRecursoEstado;
@@ -51,10 +51,10 @@ public class EstadoRecursoDTO {
   @SerializedName(SERIALIZED_NAME_FECHA_ESTADO)
   private OffsetDateTime fechaEstado;
 
-  public EstadoRecursoDTO() {
+  public EstadoRecurso() {
   }
 
-  public EstadoRecursoDTO idRecursoEstado(Integer idRecursoEstado) {
+  public EstadoRecurso idRecursoEstado(Integer idRecursoEstado) {
     
     this.idRecursoEstado = idRecursoEstado;
     return this;
@@ -76,7 +76,7 @@ public class EstadoRecursoDTO {
   }
 
 
-  public EstadoRecursoDTO nombreEstado(String nombreEstado) {
+  public EstadoRecurso nombreEstado(String nombreEstado) {
     
     this.nombreEstado = nombreEstado;
     return this;
@@ -98,7 +98,7 @@ public class EstadoRecursoDTO {
   }
 
 
-  public EstadoRecursoDTO fechaEstado(OffsetDateTime fechaEstado) {
+  public EstadoRecurso fechaEstado(OffsetDateTime fechaEstado) {
     
     this.fechaEstado = fechaEstado;
     return this;
@@ -129,10 +129,10 @@ public class EstadoRecursoDTO {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    EstadoRecursoDTO estadoRecursoDTO = (EstadoRecursoDTO) o;
-    return Objects.equals(this.idRecursoEstado, estadoRecursoDTO.idRecursoEstado) &&
-        Objects.equals(this.nombreEstado, estadoRecursoDTO.nombreEstado) &&
-        Objects.equals(this.fechaEstado, estadoRecursoDTO.fechaEstado);
+    EstadoRecurso estadoRecurso = (EstadoRecurso) o;
+    return Objects.equals(this.idRecursoEstado, estadoRecurso.idRecursoEstado) &&
+        Objects.equals(this.nombreEstado, estadoRecurso.nombreEstado) &&
+        Objects.equals(this.fechaEstado, estadoRecurso.fechaEstado);
   }
 
   @Override
@@ -143,7 +143,7 @@ public class EstadoRecursoDTO {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class EstadoRecursoDTO {\n");
+    sb.append("class EstadoRecurso {\n");
     sb.append("    idRecursoEstado: ").append(toIndentedString(idRecursoEstado)).append("\n");
     sb.append("    nombreEstado: ").append(toIndentedString(nombreEstado)).append("\n");
     sb.append("    fechaEstado: ").append(toIndentedString(fechaEstado)).append("\n");
@@ -181,20 +181,20 @@ public class EstadoRecursoDTO {
   * Validates the JSON Object and throws an exception if issues found
   *
   * @param jsonObj JSON Object
-  * @throws IOException if the JSON Object is invalid with respect to EstadoRecursoDTO
+  * @throws IOException if the JSON Object is invalid with respect to EstadoRecurso
   */
   public static void validateJsonObject(JsonObject jsonObj) throws IOException {
       if (jsonObj == null) {
-        if (!EstadoRecursoDTO.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
-          throw new IllegalArgumentException(String.format("The required field(s) %s in EstadoRecursoDTO is not found in the empty JSON string", EstadoRecursoDTO.openapiRequiredFields.toString()));
+        if (!EstadoRecurso.openapiRequiredFields.isEmpty()) { // has required fields but JSON object is null
+          throw new IllegalArgumentException(String.format("The required field(s) %s in EstadoRecurso is not found in the empty JSON string", EstadoRecurso.openapiRequiredFields.toString()));
         }
       }
 
       Set<Entry<String, JsonElement>> entries = jsonObj.entrySet();
       // check to see if the JSON string contains additional fields
       for (Entry<String, JsonElement> entry : entries) {
-        if (!EstadoRecursoDTO.openapiFields.contains(entry.getKey())) {
-          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EstadoRecursoDTO` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
+        if (!EstadoRecurso.openapiFields.contains(entry.getKey())) {
+          throw new IllegalArgumentException(String.format("The field `%s` in the JSON string is not defined in the `EstadoRecurso` properties. JSON: %s", entry.getKey(), jsonObj.toString()));
         }
       }
       if ((jsonObj.get("nombreEstado") != null && !jsonObj.get("nombreEstado").isJsonNull()) && !jsonObj.get("nombreEstado").isJsonPrimitive()) {
@@ -206,22 +206,22 @@ public class EstadoRecursoDTO {
     @SuppressWarnings("unchecked")
     @Override
     public <T> TypeAdapter<T> create(Gson gson, TypeToken<T> type) {
-       if (!EstadoRecursoDTO.class.isAssignableFrom(type.getRawType())) {
-         return null; // this class only serializes 'EstadoRecursoDTO' and its subtypes
+       if (!EstadoRecurso.class.isAssignableFrom(type.getRawType())) {
+         return null; // this class only serializes 'EstadoRecurso' and its subtypes
        }
        final TypeAdapter<JsonElement> elementAdapter = gson.getAdapter(JsonElement.class);
-       final TypeAdapter<EstadoRecursoDTO> thisAdapter
-                        = gson.getDelegateAdapter(this, TypeToken.get(EstadoRecursoDTO.class));
+       final TypeAdapter<EstadoRecurso> thisAdapter
+                        = gson.getDelegateAdapter(this, TypeToken.get(EstadoRecurso.class));
 
-       return (TypeAdapter<T>) new TypeAdapter<EstadoRecursoDTO>() {
+       return (TypeAdapter<T>) new TypeAdapter<EstadoRecurso>() {
            @Override
-           public void write(JsonWriter out, EstadoRecursoDTO value) throws IOException {
+           public void write(JsonWriter out, EstadoRecurso value) throws IOException {
              JsonObject obj = thisAdapter.toJsonTree(value).getAsJsonObject();
              elementAdapter.write(out, obj);
            }
 
            @Override
-           public EstadoRecursoDTO read(JsonReader in) throws IOException {
+           public EstadoRecurso read(JsonReader in) throws IOException {
              JsonObject jsonObj = elementAdapter.read(in).getAsJsonObject();
              validateJsonObject(jsonObj);
              return thisAdapter.fromJsonTree(jsonObj);
@@ -232,18 +232,18 @@ public class EstadoRecursoDTO {
   }
 
  /**
-  * Create an instance of EstadoRecursoDTO given an JSON string
+  * Create an instance of EstadoRecurso given an JSON string
   *
   * @param jsonString JSON string
-  * @return An instance of EstadoRecursoDTO
-  * @throws IOException if the JSON string is invalid with respect to EstadoRecursoDTO
+  * @return An instance of EstadoRecurso
+  * @throws IOException if the JSON string is invalid with respect to EstadoRecurso
   */
-  public static EstadoRecursoDTO fromJson(String jsonString) throws IOException {
-    return JSON.getGson().fromJson(jsonString, EstadoRecursoDTO.class);
+  public static EstadoRecurso fromJson(String jsonString) throws IOException {
+    return JSON.getGson().fromJson(jsonString, EstadoRecurso.class);
   }
 
  /**
-  * Convert an instance of EstadoRecursoDTO to an JSON string
+  * Convert an instance of EstadoRecurso to an JSON string
   *
   * @return JSON string
   */

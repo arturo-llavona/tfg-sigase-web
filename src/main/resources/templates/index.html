@@ -8,8 +8,7 @@
     <body>
         <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
             Usuario: <span sec:authentication="name"></span> |
-            <span th:text ="${#authentication.getDetails().getUser().getIdUsuario()}"></span>
-            <span th:text ="${#authentication.getDetails().getUser().getTipoUsuario()}"></span>
+            <span th:text ="${#authentication.getPrincipal().getNombre()}"></span>
             <div>
                 <form action="#" th:action="@{/logout}" method="post">
                     <input type="submit" value="Logout" />

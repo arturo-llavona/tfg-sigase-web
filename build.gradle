@@ -51,3 +51,13 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+tasks.register('moveAssets') {
+	// Store the build directory into a variable to avoid project reference in the configuration cache
+	def dir = buildDir
+
+	doLast {
+		ant.move file: "${dir}/resources/main/static/private/assets/",
+				todir: "${dir}/resources/main/static/"
+	}
+}

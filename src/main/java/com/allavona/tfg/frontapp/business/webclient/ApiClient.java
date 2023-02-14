@@ -51,6 +51,7 @@ import java.util.regex.Pattern;
 
 import com.allavona.tfg.frontapp.business.webclient.auth.Authentication;
 import com.allavona.tfg.frontapp.business.webclient.auth.HttpBasicAuth;
+import com.allavona.tfg.frontapp.business.webclient.auth.HttpBearerAuth;
 import com.allavona.tfg.frontapp.business.webclient.auth.ApiKeyAuth;
 
 /**

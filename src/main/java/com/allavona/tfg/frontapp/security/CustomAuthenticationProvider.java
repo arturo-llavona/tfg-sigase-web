@@ -3,14 +3,18 @@ package com.allavona.tfg.frontapp.security;
 import com.allavona.tfg.frontapp.business.webclient.api.UsersApi;
 import com.allavona.tfg.frontapp.business.webclient.model.Login;
 import com.allavona.tfg.frontapp.business.webclient.model.Usuario;
+import com.allavona.tfg.frontapp.web.controller.enums.TipoUsuarioEnum;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
+import org.thymeleaf.util.StringUtils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
@@ -32,12 +36,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         try {
             Usuario usuario = api.autenticar(login);
             if (usuario != null ) {
-                usuario.setPassword(password);
-                ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-                UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(name, password, authorities);
-                CustomUserDetails userDetails = new CustomUserDetails(usuario, authorities);
-                token.setDetails(userDetails);
-                return token;
+                List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+                authorities.add(new SimpleGrantedAuthority(TipoUsuarioEnum.valueOf(usuario.getIdUsuario()).toString()));
+                String apellidos = StringUtils.concat(usuario.getApellido1(), " ", usuario.getApellido2()).trim();
+                UserInfo userInfo = UserInfo.builder().name(name).id(usuario.getIdUsuario()).tipoUsuario(usuario.getTipoUsuario()).nombre(usuario.getNombre()).apellidos(apellidos).build();
+                return new UsernamePasswordAuthenticationToken(userInfo, authentication.getCredentials(),authorities);
             } else {
                 System.out.println("MAL");
                 return null;

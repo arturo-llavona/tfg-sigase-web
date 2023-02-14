@@ -5,14 +5,14 @@ import com.allavona.tfg.frontapp.business.webclient.api.IncidentsApi;
 import com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidente;
 import com.allavona.tfg.frontapp.business.webclient.model.Incidente;
 import com.allavona.tfg.frontapp.business.webclient.model.TipoRecurso;
-import com.allavona.tfg.frontapp.security.CustomUserDetails;
 import com.allavona.tfg.frontapp.web.controller.utils.URLConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,11 +29,18 @@ public class IncidentesRestController {
     @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.GET)
     public ResponseEntity<List<Incidente>> buscarIncidentes(
             @RequestParam(value = "closed", required = false, defaultValue = "false") final boolean closed,
-            Authentication authentication) throws ApiException {
-        CustomUserDetails userDetails = (CustomUserDetails)  authentication.getDetails();
+            Principal principal) throws ApiException {
         List<Incidente> listado = null;
         try {
-            listado = api.buscarIncidentes(userDetails.getUser().getIdUsuario(), closed);
+            listado = api.buscarIncidentes(principal.getName(), closed);
+            if ( listado != null ) {
+                if (closed) {
+                    listado.sort(Comparator.comparing(Incidente::getFechaFinalizacion).reversed());
+                } else {
+                    listado.sort(Comparator.comparing(Incidente::getFechaCreacion).reversed());
+                }
+            }
+
         } catch (Exception e) {
 
         }
@@ -42,12 +49,11 @@ public class IncidentesRestController {
     @RequestMapping(path="/{id}", produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.GET)
     public ResponseEntity<Incidente> obtenerIncidente(
             @PathVariable(name="id", required = true) final Integer idIncidente,
-            Authentication authentication) throws ApiException {
-        CustomUserDetails userDetails = (CustomUserDetails)  authentication.getDetails();
+            Principal principal) throws ApiException {
 
         Incidente incidente = null;
         try {
-            incidente = api.obtenerIncidente(userDetails.getUser().getIdUsuario(), idIncidente);
+            incidente = api.obtenerIncidente(principal.getName(), idIncidente);
         } catch (Exception e) {
 
         }
