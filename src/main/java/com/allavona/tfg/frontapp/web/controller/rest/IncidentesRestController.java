@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +34,14 @@ public class IncidentesRestController {
         List<Incidente> listado = null;
         try {
             listado = api.buscarIncidentes(principal.getName(), closed);
+            if ( listado != null ) {
+                if (closed) {
+                    listado.sort(Comparator.comparing(Incidente::getFechaFinalizacion).reversed());
+                } else {
+                    listado.sort(Comparator.comparing(Incidente::getFechaCreacion).reversed());
+                }
+            }
+
         } catch (Exception e) {
 
         }
