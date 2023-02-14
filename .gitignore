@@ -42,5 +42,5 @@ node_modules
 dist
 dist-ssr
 *.local
-!**/src/main/resources/static/assets/
-!**/src/main/resources/static/private/
+/src/main/resources/static/assets/
+/src/main/resources/static/private/
