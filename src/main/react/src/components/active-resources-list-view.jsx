@@ -15,31 +15,14 @@ import * as API from "../services/incidents";
 
 
 export function ActiveResourcesListView() {
-  const [incidents, setIncidents] = useState([]);
+  const [resources, setResources] = useState([]);
+
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState();
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-    setSelected(newSelected);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (name) => selected == name;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -51,9 +34,9 @@ export function ActiveResourcesListView() {
   };
 
   useEffect(() => {
-    API.getActiveIncidents().then(setIncidents);
+    API.getActiveResources().then(setResources);
     const interval = setInterval(() => {
-      API.getActiveIncidents().then(setIncidents);
+      API.getActiveResources().then(setResources);
     }, 10000);
     return () => clearInterval(interval);
   }, []);
@@ -67,23 +50,21 @@ export function ActiveResourcesListView() {
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Fecha de creación</TableCell>
+            <TableCell>Nombre del recurso</TableCell>
             <TableCell align="left">Nombre de incidente</TableCell>
-            <TableCell align="left">Alertante</TableCell>
-            <TableCell align="left">Localización del incidente</TableCell>
-            <TableCell align="left">Clasificación del incidente</TableCell>
+            <TableCell align="left">Estado</TableCell>
+            <TableCell align="left">Fecha del estado</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {incidents != undefined && incidents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((incidente) => {
-            const isItemSelected = isSelected(incidente.idIncidente);
+          {resources != undefined && resources.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((resource) => {
+            const isItemSelected = isSelected(resource.idRecurso);
             return (            
-                <TableRow hover={true} selected={isItemSelected} key={incidente.idIncidente} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => handleClick(event, incidente.idIncidente)} >
-                    <TableCell component="th" scope="row">{new Date(incidente.fechaCreacion).toLocaleString("es-ES")}</TableCell>
-                    <TableCell align="left">{incidente.idIncidente}-{incidente.alias}</TableCell>
-                    <TableCell align="left">{incidente.alertante}</TableCell>
-                    <TableCell align="left">{incidente.localizacionDescripcion}</TableCell>
-                    <TableCell align="left">{incidente.clasificacionIncidente.codigo} - {incidente.clasificacionIncidente.nombre}</TableCell>
+                <TableRow hover={true} selected={isItemSelected} key={resource.idRecurso} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => setSelected(resource.idRecurso)} >
+                    <TableCell component="th" scope="row">{resource.nombre}</TableCell>
+                    <TableCell align="left">{resource.idIncidente}-{resource.nombreIncidente}</TableCell>
+                    <TableCell align="left">{resource.estado.nombreEstado}</TableCell>
+                    <TableCell align="left">{new Date(resource.estado.fechaEstado).toLocaleString("es-ES")}</TableCell>
                 </TableRow>
           )
         })}
@@ -93,7 +74,7 @@ export function ActiveResourcesListView() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={incidents != undefined && incidents.length}
+          count={resources != undefined && resources.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

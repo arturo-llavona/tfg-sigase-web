@@ -1,5 +1,5 @@
 body {
-    font-family: sans;
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-size: 1em;
 }
 
@@ -11,4 +11,4 @@ p.error {
 div.logout {
     float: right;
 }
-.MuiListItemButton-root.Mui-selected .MuiListItemText-primary { font-weight: bold;
+.MuiListItemButton-root.Mui-selected .MuiListItemText-primary { font-weight: bold; }

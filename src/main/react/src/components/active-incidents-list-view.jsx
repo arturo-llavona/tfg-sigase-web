@@ -19,27 +19,9 @@ export function ActiveIncidentsListView() {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState();
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-    setSelected(newSelected);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
+  const isSelected = (name) => selected == name;
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -78,7 +60,7 @@ export function ActiveIncidentsListView() {
           {incidents != undefined && incidents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((incidente) => {
             const isItemSelected = isSelected(incidente.idIncidente);
             return (            
-                <TableRow hover={true} selected={isItemSelected} key={incidente.idIncidente} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => handleClick(event, incidente.idIncidente)} >
+                <TableRow hover={true} selected={isItemSelected} key={incidente.idIncidente} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => setSelected(incidente.idIncidente)} >
                     <TableCell component="th" scope="row">{new Date(incidente.fechaCreacion).toLocaleString("es-ES")}</TableCell>
                     <TableCell align="left">{incidente.idIncidente}-{incidente.alias}</TableCell>
                     <TableCell align="left">{incidente.alertante}</TableCell>
