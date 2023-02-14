@@ -17,9 +17,10 @@ import ListItemText from '@mui/material/ListItemText';
 import Avatar from '@mui/material/Avatar';
 import Link from '@mui/material/Link';
 
-import HomeIcon from '@mui/icons-material/Home';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import LogoutIcon from '@mui/icons-material/Logout';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import AddAlertIcon from '@mui/icons-material/AddAlert';
+import HistoryIcon from '@mui/icons-material/History';
+import MinorCrashIcon from '@mui/icons-material/MinorCrash';
 
 import { ActiveIncidentsListView } from "./components/active-incidents-list-view";
 import { ClosedIncidentsListView } from "./components/closed-incidents-list-view";
@@ -29,13 +30,13 @@ import { Center } from "@chakra-ui/react";
 const drawerWidth = 200;
 
 export function App() {
-  const [view, setView] = React.useState(1);
+  const [view, setView] = React.useState("m_incidentesEnCurso");
   const isViewSelected = (v) => v === view;
 
   let visibleView = "";
-  if ( view === 1 ) {
+  if ( view === "m_incidentesEnCurso" ) {
     visibleView = <ActiveIncidentsListView/>;
-  } else if ( view === 2 ) {
+  } else if ( view === "m_incidentesCerrados" ) {
     visibleView = <ClosedIncidentsListView/>;
   }
 
@@ -85,29 +86,37 @@ export function App() {
         <Box sx={{ overflow: 'auto' }}>
           <List>
             <ListItem key="m_incidentesEnCurso" disablePadding>
-              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected(1)} onClick={() => { setView(1); }}>
+              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected("m_incidentesEnCurso")} onClick={() => { setView("m_incidentesEnCurso"); }}>
                 <ListItemIcon>
-                  <HomeIcon color="primary" />
+                  <NotificationsIcon color="primary" />
                 </ListItemIcon>
                 <ListItemText primary="Incidentes en curso" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
               </ListItemButton>
             </ListItem>
-            <ListItem key="m_incidentesCerrados" disablePadding>
-              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected(2)} onClick={() => { setView(2); }}>
-                <ListItemIcon>
-                  <HomeIcon color="primary" />
-                </ListItemIcon>
-                <ListItemText primary="Incidentes cerrados" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
-              </ListItemButton>
-            </ListItem>               
             <ListItem key="m_crearIncidente" disablePadding>
-              <ListItemButton sx={{ py: 1.5, minHeight: 32 }}  selected={isViewSelected(3)} onClick={() => { setView(3); }}>
+              <ListItemButton sx={{ py: 1, minHeight: 32 }}  selected={isViewSelected("m_crearIncidente")} onClick={() => { setView("m_crearIncidente"); }}>
                 <ListItemIcon>
-                  <AddCircleIcon/>
+                  <AddAlertIcon/>
                 </ListItemIcon>
                 <ListItemText primary="Crear un incidente" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
               </ListItemButton>
-            </ListItem>                                       
+            </ListItem>            
+            <ListItem key="m_recursosMovilizados" disablePadding>
+              <ListItemButton sx={{ py: 1.5, minHeight: 32 }}  selected={isViewSelected("m_recursosMovilizados")} onClick={() => { setView("m_recursosMovilizados"); }}>
+                <ListItemIcon>
+                  <MinorCrashIcon color="primary"/>
+                </ListItemIcon>
+                <ListItemText primary="Recursos movilizados" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
+              </ListItemButton>
+            </ListItem>               
+            <ListItem key="m_incidentesCerrados" disablePadding>
+              <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected("m_incidentesCerrados")} onClick={() => { setView("m_incidentesCerrados"); }}>
+                <ListItemIcon>
+                  <HistoryIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Histórico de incidentes" primaryTypographyProps={{ fontSize: 12, letterSpacing: 0}}/>
+              </ListItemButton>
+            </ListItem>                        
           </List>
         </Box>
       </Drawer>

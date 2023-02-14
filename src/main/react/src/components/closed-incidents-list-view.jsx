@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { useState, useEffect } from "react";
 
+import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -60,6 +61,9 @@ export function ClosedIncidentsListView() {
 
   return (
     <>
+    <Typography variant="h6" noWrap component="div" marginBottom={2}>
+      Listado de incidentes finalizados
+    </Typography>     
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
@@ -73,7 +77,7 @@ export function ClosedIncidentsListView() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {incidents .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((incidente) => {
+          {incidents != undefined && incidents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((incidente) => {
             const isItemSelected = isSelected(incidente.idIncidente);
             return (            
                 <TableRow hover={true} selected={isItemSelected} key={incidente.idIncidente} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => handleClick(event, incidente.idIncidente)} >
@@ -92,7 +96,7 @@ export function ClosedIncidentsListView() {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={incidents.length}
+          count={incidents != undefined && incidents.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
