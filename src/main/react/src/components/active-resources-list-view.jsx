@@ -19,7 +19,7 @@ export function ActiveResourcesListView() {
 
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(20);
+  const [rowsPerPage, setRowsPerPage] = React.useState(15);
   const [selected, setSelected] = React.useState();
 
   const isSelected = (name) => selected == name;
@@ -72,7 +72,7 @@ export function ActiveResourcesListView() {
       </Table>
     </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 15]}
           component="div"
           count={resources != undefined && resources.length}
           rowsPerPage={rowsPerPage}

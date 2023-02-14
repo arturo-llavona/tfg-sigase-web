@@ -18,7 +18,7 @@ export function ClosedIncidentsListView() {
   const [incidents, setIncidents] = useState([]);
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(20);
+  const [rowsPerPage, setRowsPerPage] = React.useState(15);
   const [selected, setSelected] = React.useState([]);
 
   const isSelected = (name) => selected == name;
@@ -75,7 +75,7 @@ export function ClosedIncidentsListView() {
       </Table>
     </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 15]}
           component="div"
           count={incidents != undefined && incidents.length}
           rowsPerPage={rowsPerPage}
