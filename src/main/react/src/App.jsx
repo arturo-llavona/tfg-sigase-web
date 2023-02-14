@@ -66,7 +66,7 @@ export function App() {
         <Toolbar />
         <Center>
           <Box marginTop={3} marginBottom={2}>
-            <Avatar src="/broken-image.jpg" />
+            <Avatar sx={{ width: 70, height: 70 }} src="/avatar-arturo.jpg" />
           </Box>
         </Center>
         <Center>
