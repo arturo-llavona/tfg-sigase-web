@@ -17,9 +17,10 @@ import AddAlertIcon from '@mui/icons-material/AddAlert';
 import HistoryIcon from '@mui/icons-material/History';
 import MinorCrashIcon from '@mui/icons-material/MinorCrash';
 
-import {ActiveIncidentsListView} from "./components/active-incidents-list-view";
-import {ClosedIncidentsListView} from "./components/closed-incidents-list-view";
-import {ActiveResourcesListView} from "./components/active-resources-list-view";
+import { ActiveIncidentsListView } from "./components/active-incidents-list-view";
+import { ClosedIncidentsListView } from "./components/closed-incidents-list-view";
+import { ActiveResourcesListView } from "./components/active-resources-list-view";
+import { CreateIncidentView } from "./components/create-incident-view";
 
 import { esES } from '@mui/material/locale';
 import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
@@ -27,7 +28,7 @@ import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 const drawerWidth = 200;
 
 export function App() {
-  const [view, setView] = React.useState("m_incidentesEnCurso");
+  const [view, setView] = React.useState("m_crearIncidente");
   const isViewSelected = (v) => v === view;
 
   let visibleView = "";
@@ -37,6 +38,8 @@ export function App() {
     visibleView = <ClosedIncidentsListView/>;
   } else if ( view == "m_recursosMovilizados" ) {
     visibleView = <ActiveResourcesListView/>;
+  } else if ( view == "m_crearIncidente" ) {
+    visibleView = <CreateIncidentView/>;
   }
 
   const theme = createTheme(

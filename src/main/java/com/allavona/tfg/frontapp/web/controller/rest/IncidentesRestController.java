@@ -81,4 +81,16 @@ public class IncidentesRestController {
         }
         return Optional.ofNullable(listado).map(ResponseEntity::ok).orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
     }
+
+    @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.POST)
+    public ResponseEntity crearIncidente(@RequestBody final Incidente incidente, Principal principal) throws ApiException {
+        ResponseEntity respuesta = null;
+        try {
+            System.out.println(incidente);
+
+        } catch (Exception e) {
+
+        }
+        return Optional.ofNullable(respuesta).map(ResponseEntity::ok).orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+    }
 }
