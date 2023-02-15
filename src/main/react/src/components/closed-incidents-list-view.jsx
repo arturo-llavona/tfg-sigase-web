@@ -15,8 +15,8 @@ import * as API from "../services/incidents";
 
 
 export function ClosedIncidentsListView() {
-  const [incidents, setIncidents] = useState([]);
 
+  const [incidents, setIncidents] = useState([]);
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(15);
   const [selected, setSelected] = React.useState([]);
@@ -42,7 +42,7 @@ export function ClosedIncidentsListView() {
 
   return (
     <>
-    <Typography variant="h6" noWrap component="div" marginBottom={2}>
+    <Typography variant="h6" noWrap component="div" marginBottom={2} color="primary">
       Listado de incidentes finalizados
     </Typography>     
     <TableContainer component={Paper}>
@@ -74,7 +74,7 @@ export function ClosedIncidentsListView() {
         </TableBody>
       </Table>
     </TableContainer>
-        <TablePagination
+        <TablePagination          
           rowsPerPageOptions={[5, 10, 15]}
           component="div"
           count={incidents != undefined && incidents.length}

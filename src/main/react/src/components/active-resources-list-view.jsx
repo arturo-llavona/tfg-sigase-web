@@ -43,7 +43,7 @@ export function ActiveResourcesListView() {
 
   return (
     <>
-    <Typography variant="h6" noWrap component="div" marginBottom={2}>
+    <Typography variant="h6" noWrap component="div" marginBottom={2} color="primary">
       Listado de recursos movilizados
     </Typography>    
     <TableContainer component={Paper}>

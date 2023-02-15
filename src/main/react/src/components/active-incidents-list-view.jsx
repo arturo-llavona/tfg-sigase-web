@@ -42,7 +42,7 @@ export function ActiveIncidentsListView() {
 
   return (
     <>
-    <Typography variant="h6" noWrap component="div" marginBottom={2}>
+    <Typography variant="h6" noWrap component="div" marginBottom={2} color="primary">
       Listado de incidentes activos
     </Typography>    
     <TableContainer component={Paper}>

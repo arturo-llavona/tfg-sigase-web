@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
-        <title>Hello Spring Security</title>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+      <meta charset="UTF-8" />
+      <title>SIGASE - Sistema de Gestión de activos en situaciones de emergencia</title>
+      <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+      <script type="module" crossorigin src="/assets/index-53ee5513.js"></script>
     </head>
-    <body>
-        <div th:substituteby="index::logout"></div>
-        <h1>This is a secured page!</h1>
-        <p><a href="/index" th:href="@{/index}">Back to home page</a></p>
+    <body style="background-color: #ededed !important;">
+        <div th:replace="index::logout"></div>
+        <div id="root"></div>
+        
     </body>
 </html>

@@ -52,12 +52,21 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
-tasks.register('moveAssets') {
+tasks.register("moveAssets") {
 	// Store the build directory into a variable to avoid project reference in the configuration cache
-	def dir = buildDir
+	def dir = rootDir
+	try {
+		delete files("${dir}/src/main/resources/static/assets/")
+	} catch (Exception e) {
 
-	doLast {
-		ant.move file: "${dir}/resources/main/static/private/assets/",
-				todir: "${dir}/resources/main/static/"
+	}
+	try {
+		doLast {
+			ant.copy(todir: "${dir}/src/main/resources/static/assets/") {
+				fileset(dir: "${dir}/src/main/resources/templates/private/assets/")
+			}
+		}
+	} catch (Exception e) {
+
 	}
 }

@@ -31,7 +31,7 @@ public class SecurityConfig {
                 .formLogin((formLogin) -> formLogin
                         .loginPage("/login")
                         .failureUrl("/login-error")
-                        .defaultSuccessUrl("/private/index.html", true)
+                        .defaultSuccessUrl("/private/index", true)
                 ).logout((logout) -> logout.permitAll());
         return http.build();
     }

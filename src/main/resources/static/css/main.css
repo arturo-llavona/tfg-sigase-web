@@ -2,7 +2,13 @@ body {
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-size: 1em;
 }
-
+.logout {
+    position: fixed;
+    top: 1px;
+    right: 1px;
+    z-index: 2000;
+    display: block;
+}
 p.error {
     font-weight: bold;
     color: red;
