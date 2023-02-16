@@ -1,12 +1,66 @@
+/* General */
 body {
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-size: 1em;
+    height: 100vh;
+    margin:0px;
 }
-p.error {
-    font-weight: bold;
-    color: red;
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+/* Formulario de login */
+.login-parent-div {
+    width: 900px;
+
+    background-image: url(/img/login-bg-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 60px 40px 60px 40px;
+
+    border-radius: 20px;
 }
 
+.login-parent-div .login-div {
+    background-color: white;
+    padding: 10px 40px 40px 40px;
+    margin: auto;
+    width: 300px;
+    border-radius: 2px;
+}
+.login-parent-div .login-div h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #2d3c57;
+}
+.login-parent-div .login-div input[type="text"],
+    .login-parent-div .login-div input[type="password"]{
+    padding: 10px;
+    width: 250px;
+    margin: auto;
+    display: block;
+}
+.login-parent-div .login-div input[type="submit"] {
+    padding: 20px;
+    width: 275px;
+    margin: auto;
+    display: block;
+    background-color: #2d3c57;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+}
+
+p.error {
+    color: #e72f2f;
+    font-size: 10pt;
+    font-style: italic;
+    text-align: center;
+}
 div.logout {
     float: right;
     color: white;

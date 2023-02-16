@@ -17,6 +17,11 @@ import AddAlertIcon from '@mui/icons-material/AddAlert';
 import HistoryIcon from '@mui/icons-material/History';
 import MinorCrashIcon from '@mui/icons-material/MinorCrash';
 
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+
 import { ActiveIncidentsListView } from "./components/active-incidents-list-view";
 import { ClosedIncidentsListView } from "./components/closed-incidents-list-view";
 import { ActiveResourcesListView } from "./components/active-resources-list-view";
@@ -27,25 +32,38 @@ import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
 
 const drawerWidth = 200;
 
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export function App() {
-  const [view, setView] = React.useState("m_crearIncidente");
+  const [view, setView] = React.useState("m_incidentesEnCurso");
   const isViewSelected = (v) => v === view;
+
+  const [openStack, setOpenStack] = React.useState({'open': false });
+
+  const handleCloseStack = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpenStack({'open': false, 'severity': openStack.severity, 'stackMessage': openStack.stackMessage});
+  };
 
   let visibleView = "";
   if ( view === "m_incidentesEnCurso" ) {
-    visibleView = <ActiveIncidentsListView/>;
+    visibleView = <ActiveIncidentsListView setView={setView} setOpenStack={setOpenStack}/>;
   } else if ( view === "m_incidentesCerrados" ) {
-    visibleView = <ClosedIncidentsListView/>;
+    visibleView = <ClosedIncidentsListView setView={setView}  setOpenStack={setOpenStack}/>;
   } else if ( view == "m_recursosMovilizados" ) {
-    visibleView = <ActiveResourcesListView/>;
+    visibleView = <ActiveResourcesListView setView={setView}  setOpenStack={setOpenStack}/>;
   } else if ( view == "m_crearIncidente" ) {
-    visibleView = <CreateIncidentView/>;
+    visibleView = <CreateIncidentView setView={setView} setOpenStack={setOpenStack}/>;
   }
 
   const theme = createTheme(
     {
       palette: {
-        primary: { main: '#093866' },
+        primary: { main: '#2d3c57' },
         secondary: { main: '#6083a7'},
       },
     },
@@ -118,6 +136,13 @@ export function App() {
           {visibleView}
         </Box>
       </Box>
+      <Stack spacing={2} sx={{ width: '100%' }}>
+        <Snackbar open={openStack.open} autoHideDuration={3000} onClose={handleCloseStack}>
+          <Alert onClose={handleCloseStack} severity={openStack.severity} sx={{ width: '100%' }}>
+            {openStack.stackMessage}
+          </Alert>
+        </Snackbar>
+      </Stack>      
     </ThemeProvider>
     </>
   )

@@ -11,7 +11,9 @@ import Paper from '@mui/material/Paper';
 
 import * as API from "../services/incidents";
 
-export function CreateIncidentView() {
+
+export function CreateIncidentView(props) {
+  console.log(props);
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   const [idClasificacionIncidente, setIdClasificacionIncidente] = React.useState();
@@ -52,10 +54,15 @@ export function CreateIncidentView() {
       incidente.clasificacionIncidente = {
         "idClasificacionIncidente": idClasificacionIncidente
       }
-    }
-    
+    }        
+
     API.createIncident(incidente).then(function(data) {
-      console.log(data)
+      if ( data.ok ) {
+        props.setView("m_incidentesEnCurso");  
+        props.setOpenStack({'open': true, 'stackMessage': 'Incidente creado con éxito.', 'severity': 'success'}); 
+      } else {
+        props.setOpenStack({'open': true, 'stackMessage': 'Ha ocurrido un error creando el incidente.', 'severity': 'error'}); 
+      }
     });
   };
 
@@ -65,6 +72,7 @@ export function CreateIncidentView() {
       Creación de nuevo incidente
     </Typography>    
     <Box
+      id="formulario-alta"
       component="form"
       onSubmit={handleCreateIncident}
       sx={{

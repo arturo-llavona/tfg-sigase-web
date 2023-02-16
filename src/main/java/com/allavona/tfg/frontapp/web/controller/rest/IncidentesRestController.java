@@ -4,6 +4,7 @@ import com.allavona.tfg.frontapp.business.webclient.ApiException;
 import com.allavona.tfg.frontapp.business.webclient.api.IncidentsApi;
 import com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidente;
 import com.allavona.tfg.frontapp.business.webclient.model.Incidente;
+import com.allavona.tfg.frontapp.business.webclient.model.IncidenteDTO;
 import com.allavona.tfg.frontapp.business.webclient.model.TipoRecurso;
 import com.allavona.tfg.frontapp.web.controller.utils.URLConstants;
 import org.springframework.http.HttpStatus;
@@ -83,14 +84,13 @@ public class IncidentesRestController {
     }
 
     @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.POST)
-    public ResponseEntity crearIncidente(@RequestBody final Incidente incidente, Principal principal) throws ApiException {
-        ResponseEntity respuesta = null;
+    public ResponseEntity crearIncidente(@RequestBody final IncidenteDTO incidente, Principal principal) throws ApiException {
         try {
             System.out.println(incidente);
-
+            api.crearIncidente(principal.getName(), incidente);
+            return ResponseEntity.ok().build();
         } catch (Exception e) {
-
+            return ResponseEntity.badRequest().build();
         }
-        return Optional.ofNullable(respuesta).map(ResponseEntity::ok).orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
     }
 }

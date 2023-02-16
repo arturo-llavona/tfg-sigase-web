@@ -1,9 +1,9 @@
 plugins {
 	id 'org.springframework.boot' version '2.7.5'
 	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+	id "com.github.lkishalmi.gatling" version "3.3.4"
 	id 'java'
 }
-
 group = 'com.allavona.tfg'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
