@@ -4,17 +4,18 @@
         <title>SIGASE - Sistema de Gestión de activos en situaciones de emergencia - Login</title>
         <meta charset="utf-8" />
         <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+        <link rel="icon" type="image/png" href="/img/favicon.png" />
 	</head>
     <body>
         <div class="container">
             <div class="login-parent-div">
                 <div class="login-div">
-                <h1>Login</h1>
+                <h1>Acceso</h1>
                     <form th:action="@{/login}" method="post" autocomplete="off">
                         <input type="text" id="username" name="username" placeholder="Usuario" autofocus="autofocus" value="" /> <br />
                         <input type="password" id="password" placeholder="Contraseña" name="password" value=""/>
                         <p th:if="${loginError}" class="error">Usuario o contraseña incorrectos</p>
-                        <input type="submit" value="Acceder" />
+                        <input type="submit" value="Iniciar sesión" />
                     </form>
                 </div>
             </div>
