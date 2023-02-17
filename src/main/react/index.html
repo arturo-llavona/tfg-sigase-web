@@ -3,12 +3,13 @@
     <head>
       <meta charset="UTF-8" />
       <meta th:name="_csrf" th:content="${_csrf.token}"/>
-      <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>      
+      <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+      <meta th:name="user_type" th:content="${#authentication.getPrincipal().getTipoUsuario()}"/>
       <title>SIGASE - Sistema de Gestión de activos en situaciones de emergencia</title>
       <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
       <link rel="icon" type="image/png" href="/img/favicon.png" />
     </head>
-    <body th:class="'ut-'+${#authentication.getPrincipal().getTipoUsuario()}">
+    <body>
         <div th:replace="index::logout"></div>
         <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>

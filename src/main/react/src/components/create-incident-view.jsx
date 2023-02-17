@@ -6,6 +6,9 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+
 
 import Paper from '@mui/material/Paper';
 
@@ -13,10 +16,18 @@ import * as API from "../services/incidents";
 
 
 export function CreateIncidentView(props) {
-  console.log(props);
   const [open, setOpen] = React.useState(false);
   const [options, setOptions] = React.useState([]);
   const [idClasificacionIncidente, setIdClasificacionIncidente] = React.useState();
+
+  var userTypeMeta = document.querySelector('meta[name="user_type"]');
+  let observacionMedicaDesactivada = true;
+  if ( userTypeMeta != null ) {
+    let userType = userTypeMeta.getAttribute('content');
+    if ( userType === "2" ) {
+      observacionMedicaDesactivada = false;
+    }
+  }
 
   const loading = open && options.length === 0;
 
@@ -54,7 +65,12 @@ export function CreateIncidentView(props) {
       incidente.clasificacionIncidente = {
         "idClasificacionIncidente": idClasificacionIncidente
       }
-    }        
+    }
+    if ( event.target.observacion != null && event.target.observacion.value !== "" ) {
+      let observacionDatosMedicos = event.target.observacionDatosMedicos.checked;
+      incidente.observaciones = [];
+      incidente.observaciones.push({'texto': event.target.observacion.value, 'datosMedicos': observacionDatosMedicos});
+    }
 
     API.createIncident(incidente).then(function(data) {
       if ( data.ok ) {
@@ -82,18 +98,20 @@ export function CreateIncidentView(props) {
       autoComplete="off">
       <Paper>
           <Box padding={3}>
-            <div>
+            <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
               <TextField required id="alias" placeholder="Alias" variant="standard" size="small" />
-            </div>
-            <div>
+            </Box>
+            <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
               <TextField required id="alertante"  placeholder="Alertante" variant="standard" size="small" />
-            </div>        
-            <div>
+            </Box>
+            <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
               <TextField id="localizacionDescripcion" placeholder="Localización" variant="standard" size="small" />
+            </Box>
+            <Box sx={{ '& .MuiTextField-root': { m: 1, width: '10ch' } }}>
               <TextField id="localizacionLongitud" placeholder="Longitud" variant="standard" size="small" />
               <TextField id="localizacionLatitud" placeholder="Latitud" variant="standard" size="small" />        
-            </div>
-            <div>
+            </Box>                         
+            <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
               <Autocomplete
                 id="clasificacion"
                 fullWidth 
@@ -130,7 +148,11 @@ export function CreateIncidentView(props) {
                   />
                 )}
               />
-            </div>
+            </Box>
+            <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
+              <TextField id="observacion" placeholder="Observacion" variant="standard" size="small" multiline rows={4} maxRows={4} fullWidth />
+            </Box>
+            <FormControlLabel disabled={observacionMedicaDesactivada} control={<Checkbox id="observacionDatosMedicos"/>} label="Esta observación contiene datos médicos privados" />
             <div>
               <Box paddingLeft={1} paddingBottom={1} marginTop={3}>
                 <Button variant='contained' type='submit'>Crear incidente</Button>
