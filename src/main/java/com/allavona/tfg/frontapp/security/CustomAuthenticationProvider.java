@@ -37,16 +37,16 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
             Usuario usuario = api.autenticar(login);
             if (usuario != null ) {
                 List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-                authorities.add(new SimpleGrantedAuthority(TipoUsuarioEnum.valueOf(usuario.getIdUsuario()).toString()));
+                authorities.add(new SimpleGrantedAuthority(TipoUsuarioEnum.valueOf(usuario.getTipoUsuario()).toString()));
                 String apellidos = StringUtils.concat(usuario.getApellido1(), " ", usuario.getApellido2()).trim();
                 UserInfo userInfo = UserInfo.builder().name(name).id(usuario.getIdUsuario()).tipoUsuario(usuario.getTipoUsuario()).nombre(usuario.getNombre()).apellidos(apellidos).build();
                 return new UsernamePasswordAuthenticationToken(userInfo, authentication.getCredentials(),authorities);
             } else {
-                System.out.println("MAL");
+                System.out.println("Login incorrecto");
                 return null;
             }
         } catch ( Exception e ) {
-            System.out.println("MAL");
+            System.out.println("Ha ocurrido un error al intentar hacer el login");
             return null;
         }
     }
