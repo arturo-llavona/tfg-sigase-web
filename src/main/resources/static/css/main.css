@@ -1,4 +1,12 @@
 /* General */
+@font-face {
+    font-family: 'LEMON MILK';
+    src: url('/css/font/LEMONMILK-Bold.woff2') format('woff2'),
+    url('/css/font/LEMONMILK-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
 body {
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     background-color: #ebe7e780 !important;
@@ -100,4 +108,9 @@ header::before {
     content: '';
     opacity: 0.2;
     background-size: cover;
+}
+header .MuiTypography-h6 {
+    font-family: 'LEMON MILK';
+    font-weight: bold;
+    font-style: normal;
 }
