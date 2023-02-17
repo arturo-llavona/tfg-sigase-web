@@ -4,6 +4,8 @@ import com.allavona.tfg.frontapp.business.webclient.api.UsersApi;
 import com.allavona.tfg.frontapp.business.webclient.model.Login;
 import com.allavona.tfg.frontapp.business.webclient.model.Usuario;
 import com.allavona.tfg.frontapp.web.controller.enums.TipoUsuarioEnum;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +22,7 @@ import java.util.List;
 public class CustomAuthenticationProvider implements AuthenticationProvider {
     final UsersApi api;
 
+    private static Logger logger = LogManager.getLogger();
     public CustomAuthenticationProvider(UsersApi api) {
         this.api = api;
     }
@@ -42,11 +45,11 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
                 UserInfo userInfo = UserInfo.builder().name(name).id(usuario.getIdUsuario()).tipoUsuario(usuario.getTipoUsuario()).nombre(usuario.getNombre()).apellidos(apellidos).build();
                 return new UsernamePasswordAuthenticationToken(userInfo, authentication.getCredentials(),authorities);
             } else {
-                System.out.println("Login incorrecto");
+                logger.warn("Login incorrecto");
                 return null;
             }
         } catch ( Exception e ) {
-            System.out.println("Ha ocurrido un error al intentar hacer el login");
+            logger.error("Ha ocurrido un error al intentar hacer el login");
             return null;
         }
     }

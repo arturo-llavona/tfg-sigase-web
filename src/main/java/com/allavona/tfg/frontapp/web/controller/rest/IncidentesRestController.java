@@ -86,7 +86,6 @@ public class IncidentesRestController {
     @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.POST)
     public ResponseEntity crearIncidente(@RequestBody final IncidenteDTO incidente, Principal principal) throws ApiException {
         try {
-            System.out.println(incidente);
             api.crearIncidente(principal.getName(), incidente);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
