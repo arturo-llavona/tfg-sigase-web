@@ -23,16 +23,13 @@ body {
 /* Formulario de login */
 .login-parent-div {
     width: 900px;
-
     background-image: url(/img/login-bg-1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     padding: 60px 40px 60px 40px;
-
     border-radius: 20px;
 }
-
 .login-parent-div .login-div {
     background-color: white;
     padding: 10px 40px 40px 40px;
@@ -63,13 +60,14 @@ body {
     cursor: pointer;
     margin-top: 50px;
 }
-
 p.error {
     color: #e72f2f;
     font-size: 10pt;
     font-style: italic;
     text-align: center;
 }
+
+/* Zona privada */
 div.logout {
     float: right;
     color: white;
