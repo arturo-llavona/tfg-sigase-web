@@ -18,7 +18,9 @@ public class FrontAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(FrontAppApplication.class, args);
 	}
+
 	@Bean
+	// Bean necesario para la configuración de Thymeleaf
 	public ITemplateResolver defaultTemplateResolver() {
 		FileTemplateResolver resolver = new FileTemplateResolver();
 		resolver.setSuffix(properties.getSuffix());

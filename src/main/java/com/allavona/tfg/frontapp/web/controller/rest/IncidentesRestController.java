@@ -1,7 +1,7 @@
 package com.allavona.tfg.frontapp.web.controller.rest;
 
+import com.allavona.tfg.frontapp.business.service.IncidentesService;
 import com.allavona.tfg.frontapp.business.webclient.ApiException;
-import com.allavona.tfg.frontapp.business.webclient.api.IncidentsApi;
 import com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidente;
 import com.allavona.tfg.frontapp.business.webclient.model.Incidente;
 import com.allavona.tfg.frontapp.business.webclient.model.IncidenteDTO;
@@ -20,10 +20,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = URLConstants.INCIDENTS_URL)
 public class IncidentesRestController {
-    final IncidentsApi api;
+    final IncidentesService incidentesService;
 
-    public IncidentesRestController(IncidentsApi api) {
-        this.api = api;
+    public IncidentesRestController(IncidentesService incidentesService) {
+        this.incidentesService = incidentesService;
     }
 
 
@@ -33,7 +33,7 @@ public class IncidentesRestController {
             Principal principal) throws ApiException {
         List<Incidente> listado = null;
         try {
-            listado = api.buscarIncidentes(principal.getName(), closed);
+            listado = incidentesService.buscarIncidentes(principal.getName(), closed);
             if ( listado != null ) {
                 if (closed) {
                     listado.sort(Comparator.comparing(Incidente::getFechaFinalizacion).reversed());
@@ -54,7 +54,7 @@ public class IncidentesRestController {
 
         Incidente incidente = null;
         try {
-            incidente = api.obtenerIncidente(principal.getName(), idIncidente);
+            incidente = incidentesService.obtenerIncidente(principal.getName(), idIncidente);
         } catch (Exception e) {
 
         }
@@ -65,7 +65,7 @@ public class IncidentesRestController {
     public ResponseEntity<List<ClasificacionIncidente>> buscarClasificacionIncidente(@RequestParam(value = "codigo", required = false) final String codigo) {
         List<ClasificacionIncidente> listado = null;
         try {
-            listado = api.buscarClasificacionIncidente(codigo);
+            listado = incidentesService.buscarClasificacionIncidente(codigo);
         } catch (Exception e) {
 
         }
@@ -76,7 +76,7 @@ public class IncidentesRestController {
     public ResponseEntity<List<TipoRecurso>> buscarPlantillaClasificacionIncidente(@PathVariable(name="id", required = true) final Integer id) {
         List<TipoRecurso> listado = null;
         try {
-            listado = api.buscarPlantillaClasificacionIncidente(id);
+            listado = incidentesService.buscarPlantillaClasificacionIncidente(id);
         } catch (Exception e) {
 
         }
@@ -86,7 +86,7 @@ public class IncidentesRestController {
     @RequestMapping(produces = { MediaType.APPLICATION_JSON_VALUE } , method = RequestMethod.POST)
     public ResponseEntity crearIncidente(@RequestBody final IncidenteDTO incidente, Principal principal) throws ApiException {
         try {
-            api.crearIncidente(principal.getName(), incidente);
+            incidentesService.crearIncidente(principal.getName(), incidente);
             return ResponseEntity.ok().build();
         } catch (Exception e) {
             return ResponseEntity.badRequest().build();
