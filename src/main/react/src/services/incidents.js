@@ -72,10 +72,9 @@ export async function getClasifications() {
 }
 
 export async function createIncident(incident) {
-    var headers = { 'Content-Type': 'application/json' };
-
-    var csrfHeaderName = document.querySelector('meta[name="_csrf_header"]');
-    var token = document.querySelector('meta[name="_csrf"]');  
+    const headers = {'Content-Type': 'application/json'};
+    const csrfHeaderName = document.querySelector('meta[name="_csrf_header"]');
+    const token = document.querySelector('meta[name="_csrf"]');
     if ( csrfHeaderName != null && token != null ) {
         headers[csrfHeaderName.getAttribute('content')] = token.getAttribute('content');
     }    

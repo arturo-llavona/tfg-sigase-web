@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Typography from '@mui/material/Typography';
+import {useEffect, useState, Fragment} from 'react';
 
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
@@ -8,19 +8,16 @@ import Autocomplete from '@mui/material/Autocomplete';
 import CircularProgress from '@mui/material/CircularProgress';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
-
 import Paper from '@mui/material/Paper';
 
 import * as API from "../services/incidents";
 
-
 export function CreateIncidentView(props) {
-  const [open, setOpen] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
-  const [idClasificacionIncidente, setIdClasificacionIncidente] = React.useState();
+  const [open, setOpen] = useState(false);
+  const [options, setOptions] = useState([]);
+  const [idClasificacionIncidente, setIdClasificacionIncidente] = useState();
+  const userTypeMeta = document.querySelector('meta[name="user_type"]');
 
-  var userTypeMeta = document.querySelector('meta[name="user_type"]');
   let observacionMedicaDesactivada = true;
   if ( userTypeMeta != null ) {
     let userType = userTypeMeta.getAttribute('content');
@@ -30,8 +27,7 @@ export function CreateIncidentView(props) {
   }
 
   const loading = open && options.length === 0;
-
-  React.useEffect(() => {
+  useEffect(() => {
     let active = true;
 
     if (!loading) {
@@ -45,7 +41,7 @@ export function CreateIncidentView(props) {
     };
   }, [loading]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!open) {
       setOptions([]);
     }
@@ -139,10 +135,10 @@ export function CreateIncidentView(props) {
                     InputProps={{
                       ...params.InputProps,
                       endAdornment: (
-                        <React.Fragment>
+                        <Fragment>
                           {loading ? <CircularProgress color="inherit" size={20} /> : null}
                           {params.InputProps.endAdornment}
-                        </React.Fragment>
+                        </Fragment>
                       ),
                     }}
                   />

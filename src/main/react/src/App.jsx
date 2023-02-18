@@ -18,7 +18,6 @@ import HistoryIcon from '@mui/icons-material/History';
 import MinorCrashIcon from '@mui/icons-material/MinorCrash';
 
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
 
@@ -28,7 +27,7 @@ import { ActiveResourcesListView } from "./components/active-resources-list-view
 import { CreateIncidentView } from "./components/create-incident-view";
 
 import { esES } from '@mui/material/locale';
-import { createTheme, ThemeProvider, useTheme } from '@mui/material/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const drawerWidth = 200;
 

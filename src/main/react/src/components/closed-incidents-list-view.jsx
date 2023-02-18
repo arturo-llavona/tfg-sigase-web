@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {useEffect, useState} from 'react';
 
 import Typography from '@mui/material/Typography';
@@ -17,9 +16,9 @@ import * as API from "../services/incidents";
 export function ClosedIncidentsListView() {
 
   const [incidents, setIncidents] = useState([]);
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(15);
-  const [selected, setSelected] = React.useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(15);
+  const [selected, setSelected] = useState([]);
 
   const isSelected = (name) => selected == name;
 
