@@ -1,5 +1,6 @@
 const API_URL = "/private/rest";
 
+// Método que devuelve los incidentes activos.
 export async function getActiveIncidents() {
     try {
         const response = await fetch(`${API_URL}/incidents?closed=false`);
@@ -11,12 +12,15 @@ export async function getActiveIncidents() {
     }
 }
 
+// Método que devuelve los recursos activos
 export async function getActiveResources() {
     try {
+        // Lo primero que se hace es consultar los incidentes activos
         const response = await fetch(`${API_URL}/incidents?closed=false`);        
         const data = await response.json();
 
         const activeResources = [];
+        // Después recorre cada incidente, para quedarse con la información de los recursos que están movilizados en él.
         data.forEach(incidente => {
             if ( incidente.recursos != null && incidente.recursos.length > 0 ) {
                 incidente.recursos.forEach(recurso => {
@@ -33,13 +37,12 @@ export async function getActiveResources() {
                 });
             }
         });
-
         return activeResources;
     } catch ( error ) {
         console.error(error);
     } 
 }
-
+// Método que devuelve el listado de incidentes finalizados.
 export async function getClosedIncidents() {
     try {
         const response = await fetch(`${API_URL}/incidents?closed=true`);
@@ -50,6 +53,7 @@ export async function getClosedIncidents() {
     }
 }
 
+// Método que devuelve el detalle de un incidente.
 export async function getIncidentByIdIncident(idIncident) {
     try {
         const response = await fetch(`${API_URL}/incidents/${idIncident}`);
@@ -60,6 +64,7 @@ export async function getIncidentByIdIncident(idIncident) {
     }    
 }
 
+// Método que devuelve las posibles clasificaciones de un incidente.
 export async function getClasifications() {
     try {
         const response = await fetch(`${API_URL}/incidents/classifications`);
@@ -71,7 +76,10 @@ export async function getClasifications() {
     }    
 }
 
+// Método que crea un incidente.
 export async function createIncident(incident) {
+    // Como la aplicación está protegida ante ataques CSRF, al estar realizando una petición POST hace falta enviar
+    // el header csrf con su token.
     const headers = {'Content-Type': 'application/json'};
     const csrfHeaderName = document.querySelector('meta[name="_csrf_header"]');
     const token = document.querySelector('meta[name="_csrf"]');

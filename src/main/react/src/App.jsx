@@ -1,14 +1,14 @@
 import * as React from "react";
 
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
-import CssBaseline from '@mui/material/CssBaseline';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
@@ -31,16 +31,19 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const drawerWidth = 200;
 
+// Creamos un componente que llamamos Alert basado en el componente MuiAlert, con unas propiedades por defecto.
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
 export function App() {
+  // Creamos los hooks para modificar la vista que está activa en la aplicación. Por defecto será la de incidentes en curso.
   const [view, setView] = React.useState("m_incidentesEnCurso");
+  // Creamos una función para comprobar si una vista es la que está actualmente viéndose.
   const isViewSelected = (v) => v === view;
 
+  // Creamos los hooks para controlar el stack que aparece a la hora de crear incidentes.
   const [openStack, setOpenStack] = React.useState({'open': false });
-
   const handleCloseStack = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -48,6 +51,9 @@ export function App() {
     setOpenStack({'open': false, 'severity': openStack.severity, 'stackMessage': openStack.stackMessage});
   };
 
+  // Establecemos el componente que debe devolverse en el retorno de la aplicación, dependiendo del valor de la vista
+  // activa. Le pasamos como parámetro las referencias a los métodos setView y setOpenStack para que puedan ser accedidos
+  // desde los componentes hijos.
   let visibleView = "";
   if ( view === "m_incidentesEnCurso" ) {
     visibleView = <ActiveIncidentsListView setView={setView} setOpenStack={setOpenStack}/>;
@@ -59,6 +65,7 @@ export function App() {
     visibleView = <CreateIncidentView setView={setView} setOpenStack={setOpenStack}/>;
   }
 
+  // Customizamos el tema por defecto de Mui.
   const theme = createTheme(
     {
       palette: {
