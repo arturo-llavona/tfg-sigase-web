@@ -2,7 +2,6 @@ package com.allavona.tfg.frontapp.business.service.impl;
 
 import com.allavona.tfg.frontapp.business.service.IncidentesService;
 import com.allavona.tfg.frontapp.business.webclient.ApiException;
-import com.allavona.tfg.frontapp.business.webclient.ApiResponse;
 import com.allavona.tfg.frontapp.business.webclient.api.IncidentsApi;
 import com.allavona.tfg.frontapp.business.webclient.model.ClasificacionIncidente;
 import com.allavona.tfg.frontapp.business.webclient.model.Incidente;

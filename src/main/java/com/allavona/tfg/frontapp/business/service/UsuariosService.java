@@ -5,5 +5,6 @@ import com.allavona.tfg.frontapp.business.webclient.model.Login;
 import com.allavona.tfg.frontapp.business.webclient.model.Usuario;
 
 public interface UsuariosService {
-    public Usuario autenticar(Login login) throws ApiException;
+    // Método que comprueba las credenciales de un usuario
+    Usuario autenticar(Login login) throws ApiException;
 }
