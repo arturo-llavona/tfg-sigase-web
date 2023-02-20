@@ -19,6 +19,11 @@ export function CreateIncidentView(props) {
   const [options, setOptions] = useState([]);
   // Se crea un hook para controlar el id de la clasificación de un incidente que se encuentra seleccioanda
   const [idClasificacionIncidente, setIdClasificacionIncidente] = useState();
+  // Se crea un hook para controlar si debe mostrarse error en el campo alias.
+  const [errorAlias, setErrorAlias] = useState(false);
+  // Se crea un hook para controlar si debe mostrarse un error en el campo clasificación del incidente.
+  const [errorClasificacionIncidente, setErrorClasificacionIncidente] = useState(false);
+
 
   // Guardamos en una variable el tipo de usuario al que pertenece el usuario logado.
   const userTypeMeta = document.querySelector('meta[name="user_type"]');
@@ -56,6 +61,27 @@ export function CreateIncidentView(props) {
   const handleCreateIncident = (event) => {
     // Se previene el comportamiento por defecto del evento submit.
     event.preventDefault();
+
+
+    let error = false;
+    // Si no se ha introducido valor en el alias, que es un campo requerido, mostramos error.
+    if ( event.target.alias.value === "" ) {
+      setErrorAlias(true);
+      error = true;
+    } else {
+      setErrorAlias(false);
+    }
+    // Si no se ha introducido valor en el campo de clasificación del incidente, que es un campo requerido, mostramos error.
+    if ( idClasificacionIncidente === "" || idClasificacionIncidente == undefined) {
+      setErrorClasificacionIncidente(true);
+      error = true;
+    } else {
+      setErrorClasificacionIncidente(false);
+    }
+    // En caso de haber mostrado error, cortamos la ejecución de la función.
+    if ( error ) {
+      return null;
+    }
 
     // Se crea un incidente, y se van completando sus datos basándonos en el contenido del formulario.
     const incidente = {}
@@ -112,10 +138,10 @@ export function CreateIncidentView(props) {
       <Paper>
           <Box padding={3}>
             <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
-              <TextField required id="alias" placeholder="Alias" variant="standard" size="small" />
+              <TextField required id="alias" placeholder="Alias" variant="standard" size="small"  helperText="* Requerido" error={errorAlias}/>
             </Box>
             <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
-              <TextField required id="alertante"  placeholder="Alertante" variant="standard" size="small" />
+              <TextField id="alertante"  placeholder="Alertante" variant="standard" size="small" />
             </Box>
             <Box sx={{ '& .MuiTextField-root': { m: 1, width: '40ch' } }}>
               <TextField id="localizacionDescripcion" placeholder="Localización" variant="standard" size="small" />
@@ -147,7 +173,10 @@ export function CreateIncidentView(props) {
                 loading={loading}
                 renderInput={(params) => (
                   <TextField  
-                    placeholder="Clasificación"            
+                    placeholder="Clasificación"
+                    required
+                    error={errorClasificacionIncidente}
+                    helperText="* Requerido"             
                     {...params}
                     InputProps={{
                       ...params.InputProps,
