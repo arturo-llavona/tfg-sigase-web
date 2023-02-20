@@ -111,7 +111,7 @@ export function CreateIncidentView(props) {
       if ( data.ok ) {
         // En caso de que la creación haya resultado exitosa, se llama al método setView del padre, para mostrar la vista
         // de incidentes en curso, y además se abre el stack indicando que la inserión ha sido correcta.
-        props.setView("m_incidentesEnCurso");  
+        props.setView({name: "m_incidentesEnCurso"});  
         props.setOpenStack({'open': true, 'stackMessage': 'Incidente creado con éxito.', 'severity': 'success'}); 
       } else {
         // En caso de fallar la inserción, se llama a la función setOpenStack del padre para indicar que ha ocurrido un error

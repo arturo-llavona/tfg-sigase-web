@@ -9,10 +9,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TableCell from '@mui/material/TableCell';
+import Tooltip from '@mui/material/Tooltip';
+import ManageSearchIcon from '@mui/icons-material/ManageSearch';
 
 import * as API from "../services/incidents";
 
-export function ClosedIncidentsListView() {
+export function ClosedIncidentsListView(props) {
   // Creamos el hook para que la vista se actualice cuando se modifique el listado de incidentes
   const [incidents, setIncidents] = useState([]);
   // Creamos los hook para que la vista se actualice cuando se modifique la página que se está viendo, el número
@@ -24,6 +26,11 @@ export function ClosedIncidentsListView() {
   // Creamos el método que devuelve si una fila está seleccionada comparando el nombre de la fila, con la que está marcada
   // como seleccionada
   const isSelected = (name) => selected == name;
+
+  // Enviamos a la vista de detalle del incidente
+  const handleOpenDetail = (event, idIncidente) => {
+    props.setView({name: 'm_detalleIncidente', idIncidente: idIncidente});    
+  };
 
   // Creamos el método para controlar cuando se intenta cambiar de página.
   const handleChangePage = (event, newPage) => {
@@ -57,6 +64,7 @@ export function ClosedIncidentsListView() {
             <TableCell align="left">Alertante</TableCell>
             <TableCell align="left">Localización del incidente</TableCell>
             <TableCell align="left">Clasificación del incidente</TableCell>
+            <TableCell align="center">Acciones</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -70,6 +78,11 @@ export function ClosedIncidentsListView() {
                     <TableCell align="left">{incidente.alertante}</TableCell>
                     <TableCell align="left">{incidente.localizacionDescripcion}</TableCell>
                     <TableCell align="left">{incidente.clasificacionIncidente.codigo} - {incidente.clasificacionIncidente.nombre}</TableCell>
+                    <TableCell align="center">
+                      <Tooltip title="Detalle del incidente">
+                        <ManageSearchIcon onClick={(event) => { handleOpenDetail(event, incidente.idIncidente);} }/>
+                      </Tooltip>
+                    </TableCell>                    
                 </TableRow>
           )
         })}

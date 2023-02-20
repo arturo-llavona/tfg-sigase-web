@@ -24,6 +24,7 @@ import MuiAlert from '@mui/material/Alert';
 import { ActiveIncidentsListView } from "./components/active-incidents-list-view";
 import { ClosedIncidentsListView } from "./components/closed-incidents-list-view";
 import { ActiveResourcesListView } from "./components/active-resources-list-view";
+import { IncidentDetailView } from "./components/incident-detail-view";
 import { CreateIncidentView } from "./components/create-incident-view";
 
 import { esES } from '@mui/material/locale';
@@ -38,9 +39,9 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export function App() {
   // Creamos los hooks para modificar la vista que está activa en la aplicación. Por defecto será la de incidentes en curso.
-  const [view, setView] = React.useState("m_incidentesEnCurso");
+  const [view, setView] = React.useState({name: "m_incidentesEnCurso"});
   // Creamos una función para comprobar si una vista es la que está actualmente viéndose.
-  const isViewSelected = (v) => v === view;
+  const isViewSelected = (v) => v === view.name;
 
   // Creamos los hooks para controlar el stack que aparece a la hora de crear incidentes.
   const [openStack, setOpenStack] = React.useState({'open': false });
@@ -55,14 +56,16 @@ export function App() {
   // activa. Le pasamos como parámetro las referencias a los métodos setView y setOpenStack para que puedan ser accedidos
   // desde los componentes hijos.
   let visibleView = "";
-  if ( view === "m_incidentesEnCurso" ) {
+  if ( view.name === "m_incidentesEnCurso" ) {
     visibleView = <ActiveIncidentsListView setView={setView} setOpenStack={setOpenStack}/>;
-  } else if ( view === "m_incidentesCerrados" ) {
+  } else if ( view.name === "m_incidentesCerrados" ) {
     visibleView = <ClosedIncidentsListView setView={setView}  setOpenStack={setOpenStack}/>;
-  } else if ( view == "m_recursosMovilizados" ) {
+  } else if ( view.name == "m_recursosMovilizados" ) {
     visibleView = <ActiveResourcesListView setView={setView}  setOpenStack={setOpenStack}/>;
-  } else if ( view == "m_crearIncidente" ) {
+  } else if ( view.name == "m_crearIncidente" ) {
     visibleView = <CreateIncidentView setView={setView} setOpenStack={setOpenStack}/>;
+  } else if ( view.name == "m_detalleIncidente" ) {
+    visibleView = <IncidentDetailView setView={setView} setOpenStack={setOpenStack} idIncidente={view.idIncidente}/>
   }
 
   // Customizamos el tema por defecto de Mui.
@@ -103,7 +106,7 @@ export function App() {
           <Box sx={{ overflow: 'auto' }}>
             <List>
               <ListItem key="m_incidentesEnCurso" disablePadding>
-                <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected("m_incidentesEnCurso")} onClick={() => { setView("m_incidentesEnCurso"); }}>
+                <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected("m_incidentesEnCurso")} onClick={() => { setView({name: "m_incidentesEnCurso"}); }}>
                   <ListItemIcon>
                     <NotificationsIcon color="primary" />
                   </ListItemIcon>
@@ -111,7 +114,7 @@ export function App() {
                 </ListItemButton>
               </ListItem>
               <ListItem key="m_crearIncidente" disablePadding>
-                <ListItemButton sx={{ py: 1, minHeight: 32 }}  selected={isViewSelected("m_crearIncidente")} onClick={() => { setView("m_crearIncidente"); }}>
+                <ListItemButton sx={{ py: 1, minHeight: 32 }}  selected={isViewSelected("m_crearIncidente")} onClick={() => { setView({name: "m_crearIncidente"}); }}>
                   <ListItemIcon>
                     <AddAlertIcon color="secondary"/>
                   </ListItemIcon>
@@ -119,7 +122,7 @@ export function App() {
                 </ListItemButton>
               </ListItem>            
               <ListItem key="m_recursosMovilizados" disablePadding>
-                <ListItemButton sx={{ py: 1.5, minHeight: 32 }}  selected={isViewSelected("m_recursosMovilizados")} onClick={() => { setView("m_recursosMovilizados"); }}>
+                <ListItemButton sx={{ py: 1.5, minHeight: 32 }}  selected={isViewSelected("m_recursosMovilizados")} onClick={() => { setView({name: "m_recursosMovilizados"}); }}>
                   <ListItemIcon>
                     <MinorCrashIcon color="primary"/>
                   </ListItemIcon>
@@ -127,7 +130,7 @@ export function App() {
                 </ListItemButton>
               </ListItem>               
               <ListItem key="m_incidentesCerrados" disablePadding>
-                <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected("m_incidentesCerrados")} onClick={() => { setView("m_incidentesCerrados"); }}>
+                <ListItemButton sx={{ py: 1.5, minHeight: 32 }} selected={isViewSelected("m_incidentesCerrados")} onClick={() => { setView({name: "m_incidentesCerrados"}); }}>
                   <ListItemIcon>
                     <HistoryIcon color="primary" />
                   </ListItemIcon>

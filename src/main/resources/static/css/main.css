@@ -95,6 +95,7 @@ div.logout .perfil {
 
 .MuiListItemButton-root.Mui-selected .MuiListItemText-primary { font-weight: bold; }
 .MuiFormControl-fullWidth { width: 465px !important; }
+.MuiSvgIcon-root { cursor: pointer; }
 
 header::before {
     background-image: url(/img/login-bg-1.jpg);
