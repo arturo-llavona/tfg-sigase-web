@@ -1,6 +1,6 @@
 package com.allavona.tfg.frontapp.web.controller.rest;
 
-import com.allavona.tfg.frontapp.business.webclient.api.ResourcesApi;
+import com.allavona.tfg.frontapp.business.service.RecursosService;
 import com.allavona.tfg.frontapp.business.webclient.model.Recurso;
 import com.allavona.tfg.frontapp.web.controller.utils.URLConstants;
 import org.springframework.http.HttpStatus;
@@ -17,12 +17,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = URLConstants.RESOURCES_URL)
 public class RecursosRestController {
-    final ResourcesApi api;
-
-    public RecursosRestController(ResourcesApi api) {
-        this.api = api;
+    final RecursosService recursosService;
+    public RecursosRestController(RecursosService recursosService) {
+        this.recursosService = recursosService;
     }
-
 
     @RequestMapping( produces = {MediaType.APPLICATION_JSON_VALUE }, method = RequestMethod.GET)
     public  ResponseEntity<List<Recurso>> listar(
@@ -30,7 +28,8 @@ public class RecursosRestController {
             @RequestParam(value = "onlyAvailable", required = false, defaultValue = "true") final Boolean onlyAvailable) {
         List<Recurso> listado = null;
         try {
-            listado = api.listar(idTipoRecurso, onlyAvailable);
+            // Se llama a la capa de servicios para obtener el listado de recursos.
+            listado = recursosService.listar(idTipoRecurso, onlyAvailable);
         } catch (Exception e) {
 
         }

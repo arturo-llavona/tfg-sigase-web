@@ -1,89 +1,76 @@
-import * as React from 'react';
 import {useEffect, useState} from 'react';
 
 import Typography from '@mui/material/Typography';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TablePagination from '@mui/material/TablePagination ';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TableCell from '@mui/material/TableCell';
 
 import * as API from "../services/incidents";
 
-
 export function ActiveResourcesListView() {
-  const [incidents, setIncidents] = useState([]);
+  // Creamos el hook para que la vista se actualice cuando se modifique el listado de recursos
+  const [resources, setResources] = useState([]);
+  // Creamos los hook para que la vista se actualice cuando se modifique la página que se está viendo, el número
+  // de filas por página, y la fila que está seleccionada.
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(15);
+  const [selected, setSelected] = useState();
 
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(20);
-  const [selected, setSelected] = React.useState([]);
+  // Creamos el método que devuelve si una fila está seleccionada comparando el nombre de la fila, con la que está marcada
+  // como seleccionada
+  const isSelected = (name) => selected == name;
 
-  const handleClick = (event, name) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected = [];
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1),
-      );
-    }
-    setSelected(newSelected);
-  };
-
-  const isSelected = (name) => selected.indexOf(name) !== -1;
-
+  // Creamos el método para controlar cuando se intenta cambiar de página.
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
+  // Creamos el método para controlar cuando se modifican el número de filas por página.
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
   useEffect(() => {
-    API.getActiveIncidents().then(setIncidents);
+    // Se hace una petición al API para obtener los recursos movilizados actualmente.
+    API.getActiveResources().then(setResources);
+
+    // Se crea un bucle que cada 10 segundos va actualizando la lista de recursos movilizados actualmente.
     const interval = setInterval(() => {
-      API.getActiveIncidents().then(setIncidents);
+      API.getActiveResources().then(setResources);
     }, 10000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <>
-    <Typography variant="h6" noWrap component="div" marginBottom={2}>
+    <Typography variant="h6" noWrap component="div" marginBottom={2} color="primary">
       Listado de recursos movilizados
     </Typography>    
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell>Fecha de creación</TableCell>
+            <TableCell>Nombre del recurso</TableCell>
             <TableCell align="left">Nombre de incidente</TableCell>
-            <TableCell align="left">Alertante</TableCell>
-            <TableCell align="left">Localización del incidente</TableCell>
-            <TableCell align="left">Clasificación del incidente</TableCell>
+            <TableCell align="left">Estado</TableCell>
+            <TableCell align="left">Fecha del estado</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {incidents != undefined && incidents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((incidente) => {
-            const isItemSelected = isSelected(incidente.idIncidente);
+          {resources != undefined && resources.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((resource) => {
+            const isItemSelected = isSelected(resource.idRecurso);
             return (            
-                <TableRow hover={true} selected={isItemSelected} key={incidente.idIncidente} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => handleClick(event, incidente.idIncidente)} >
-                    <TableCell component="th" scope="row">{new Date(incidente.fechaCreacion).toLocaleString("es-ES")}</TableCell>
-                    <TableCell align="left">{incidente.idIncidente}-{incidente.alias}</TableCell>
-                    <TableCell align="left">{incidente.alertante}</TableCell>
-                    <TableCell align="left">{incidente.localizacionDescripcion}</TableCell>
-                    <TableCell align="left">{incidente.clasificacionIncidente.codigo} - {incidente.clasificacionIncidente.nombre}</TableCell>
+                <TableRow hover={true} selected={isItemSelected} key={resource.idRecurso} sx={{ '&:last-child td, &:last-child th': { border: 0 }}} onClick={(event) => setSelected(resource.idRecurso)} >
+                    <TableCell component="th" scope="row">{resource.nombre}</TableCell>
+                    <TableCell align="left">{resource.idIncidente}-{resource.nombreIncidente}</TableCell>
+                    <TableCell align="left">{resource.estado.nombreEstado}</TableCell>
+                    <TableCell align="left">{new Date(resource.estado.fechaEstado).toLocaleString("es-ES")}</TableCell>
                 </TableRow>
           )
         })}
@@ -91,9 +78,9 @@ export function ActiveResourcesListView() {
       </Table>
     </TableContainer>
         <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
+          rowsPerPageOptions={[5, 10, 15]}
           component="div"
-          count={incidents != undefined && incidents.length}
+          count={resources != undefined && resources.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}

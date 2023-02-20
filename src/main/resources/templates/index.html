@@ -7,11 +7,18 @@
     </head>
     <body>
         <div th:fragment="logout" class="logout" sec:authorize="isAuthenticated()">
-            Usuario: <span sec:authentication="name"></span> |
-            <span th:text ="${#authentication.getPrincipal().getNombre()}"></span>
+            <div>
+                <span th:text ="${#authentication.getPrincipal().getNombre()}"></span>
+                <span th:text ="${#authentication.getPrincipal().getApellidos()}"></span>
+                (
+                <span class="perfil" th:if="${#authentication.getPrincipal().getTipoUsuario() == 1}">Agente</span>
+                <span class="perfil" th:if="${#authentication.getPrincipal().getTipoUsuario() == 2}">Médico</span>
+                <span class="perfil" th:if="${#authentication.getPrincipal().getTipoUsuario() == 3}">Administrador</span>
+                )
+            </div>
             <div>
                 <form action="#" th:action="@{/logout}" method="post">
-                    <input type="submit" value="Logout" />
+                    <input type="submit" value="Cerrar sesión" />
                 </form>
             </div>
         </div>

@@ -2,11 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
     <head>
       <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta th:name="_csrf" th:content="${_csrf.token}"/>
+      <meta th:name="_csrf_header" th:content="${_csrf.headerName}"/>
+      <meta th:name="user_type" th:content="${#authentication.getPrincipal().getTipoUsuario()}"/>
       <title>SIGASE - Sistema de Gestión de activos en situaciones de emergencia</title>
       <link rel="stylesheet" href="/css/main.css" th:href="@{/css/main.css}" />
+      <link rel="icon" type="image/png" href="/img/favicon.png" />
     </head>
-    <body style="background-color: #ededed !important;">
+    <body>
+        <div th:replace="index::logout"></div>
         <div id="root"></div>
         <script type="module" src="/src/main.jsx"></script>
     </body>

@@ -1,14 +1,116 @@
-body {
-    font-family: sans;
-    font-size: 1em;
-}
-
-p.error {
+/* General */
+@font-face {
+    font-family: 'LEMON MILK';
+    src: url('/css/font/LEMONMILK-Bold.woff2') format('woff2'),
+    url('/css/font/LEMONMILK-Bold.woff') format('woff');
     font-weight: bold;
-    color: red;
+    font-style: normal;
+    font-display: swap;
+}
+body {
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    background-color: #ebe7e780 !important;
+    font-size: 1em;
+    height: 100vh;
+    margin:0px;
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+/* Formulario de login */
+.login-parent-div {
+    width: 900px;
+    background-image: url(/img/login-bg-1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 60px 40px 60px 40px;
+    border-radius: 20px;
+}
+.login-parent-div .login-div {
+    background-color: white;
+    padding: 10px 40px 40px 40px;
+    margin: auto;
+    width: 300px;
+    border-radius: 2px;
+}
+.login-parent-div .login-div h1 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #2d3c57;
+}
+.login-parent-div .login-div input[type="text"],
+    .login-parent-div .login-div input[type="password"]{
+    padding: 10px;
+    width: 250px;
+    margin: auto;
+    display: block;
+}
+.login-parent-div .login-div input[type="submit"] {
+    padding: 20px;
+    width: 275px;
+    margin: auto;
+    display: block;
+    background-color: #2d3c57;
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    margin-top: 50px;
+}
+p.error {
+    color: #e72f2f;
+    font-size: 10pt;
+    font-style: italic;
+    text-align: center;
 }
 
+/* Zona privada */
 div.logout {
     float: right;
+    color: white;
+    font-size: 10pt;
+    font-weight: 300;
+    position: fixed;
+    top: 10px;
+    right: 25px;
+    z-index: 2000;
+    display: block;
 }
-.MuiListItemButton-root.Mui-selected .MuiListItemText-primary { font-weight: bold;
+div.logout input[type="submit"] {
+    float: right;
+    cursor: pointer;
+    margin-top: 4px;
+    background: transparent;
+    border: 0px;
+    color: #a2d1ff;
+    text-decoration: underline;
+    font-size: 8pt;
+}
+div.logout .perfil {
+    font-style: italic;
+}
+
+.MuiListItemButton-root.Mui-selected .MuiListItemText-primary { font-weight: bold; }
+.MuiFormControl-fullWidth { width: 465px !important; }
+.MuiSvgIcon-root { cursor: pointer; }
+
+header::before {
+    background-image: url(/img/login-bg-1.jpg);
+    top: 1px;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+    content: '';
+    opacity: 0.2;
+    background-size: cover;
+}
+header .MuiTypography-h6 {
+    font-family: 'LEMON MILK';
+    font-weight: bold;
+    font-style: normal;
+    font-size: 2.4rem;
+}
