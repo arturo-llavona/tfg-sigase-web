@@ -10,14 +10,20 @@ import TableContainer from '@mui/material/TableContainer';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Link from '@mui/material/Link';
 
 import * as API from "../services/incidents";
-import { Divider } from '@mui/material';
+
 
 export function IncidentDetailView(props) {
   const idIncidente = props.idIncidente;
   // Creamos el hook para que la vista se actualice cuando se modifique el listado de incidentes
   const [incidente, setIncidente] = useState([]);
+
+  // Creamos el handler para cuando se quiere volver a la página anterior
+  const handleBackClick = (event) => {
+    props.setView({name: props.from});
+  };
 
   // Creamos el hook para actualizar la vista
   useEffect(() => {
@@ -27,20 +33,24 @@ export function IncidentDetailView(props) {
   }, []);
 
   let personaAfectadaView = "";
-  if ( incidente.personaAfectada != null ) {
-    personaAfectadaView = <PersonaAfectadaView data={incidente.personaAfectada}/>;
-  }
   let observacionesView = "";
-  if ( incidente.observaciones != null && incidente.observaciones.length > 0 ) {
-    observacionesView = <ObservacionesView data={incidente.observaciones}/>;
-  }
   let recursosView = "";
-  if ( incidente.recursos != null && incidente.recursos.length > 0 ) {
-    recursosView = <RecursosView data={incidente.recursos}/>;
+  if ( incidente != null ) {
+    if ( incidente != null && incidente.personaAfectada != null ) {
+      personaAfectadaView = <PersonaAfectadaView data={incidente.personaAfectada}/>;
+    }    
+    if ( incidente.observaciones != null && incidente.observaciones.length > 0 ) {
+      observacionesView = <ObservacionesView data={incidente.observaciones}/>;
+    }  
+    if ( incidente.recursos != null && incidente.recursos.length > 0 ) {
+      recursosView = <RecursosView data={incidente.recursos}/>;
+    }
   }
-
   return (
     <>
+      <Link href="#" variant="body2" onClick={handleBackClick}>
+        « Volver
+      </Link>
       <Typography variant="h6" noWrap component="div" marginBottom={2} color="primary">
         Detalle del incidente #{incidente.idIncidente}-{incidente.alias}
       </Typography>
