@@ -65,7 +65,7 @@ export function App() {
   } else if ( view.name == "m_crearIncidente" ) {
     visibleView = <CreateIncidentView setView={setView} setOpenStack={setOpenStack}/>;
   } else if ( view.name == "m_detalleIncidente" ) {
-    visibleView = <IncidentDetailView setView={setView} setOpenStack={setOpenStack} idIncidente={view.idIncidente}/>
+    visibleView = <IncidentDetailView setView={setView} setOpenStack={setOpenStack} idIncidente={view.idIncidente} from={view.from}/>
   }
 
   // Customizamos el tema por defecto de Mui.

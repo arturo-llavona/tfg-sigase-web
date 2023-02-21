@@ -29,7 +29,7 @@ export function ActiveIncidentsListView(props) {
 
   // Enviamos a la vista de detalle del incidente
   const handleOpenDetail = (event, idIncidente) => {
-    props.setView({name: 'm_detalleIncidente', idIncidente: idIncidente});    
+    props.setView({name: 'm_detalleIncidente', idIncidente: idIncidente, from: 'm_incidentesEnCurso'});    
   };
 
   // Creamos el método para controlar cuando se intenta cambiar de página.
