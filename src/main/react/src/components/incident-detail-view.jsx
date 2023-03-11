@@ -148,7 +148,7 @@ export function ObservacionesView(props) {
               <TableRow>
                 <TableCell>Texto</TableCell>
                 <TableCell align="left">Autor</TableCell>
-                <TableCell align="left">Fecha del estado</TableCell>
+                <TableCell align="left">Fecha</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
